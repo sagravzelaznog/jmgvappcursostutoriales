@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Configuración de Firebase
     const firebaseConfig = {
-        apiKey: "AIzaSyC08vUkWdQ9Ad3PaXS0uZ0yu_EWWBaq-aQ",
+        apiKey: window.ENV ? window.ENV.FIREBASE_API_KEY : "",
         authDomain: "acceso-a-cursos-4a314.firebaseapp.com",
         projectId: "acceso-a-cursos-4a314",
         storageBucket: "acceso-a-cursos-4a314.firebasestorage.app",
