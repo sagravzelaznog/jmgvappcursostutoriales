@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prácticas de JavaScript - Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <div>
+            <h1>📚 Prácticas de JavaScript</h1>
+            <p style="color: var(--text-secondary);">Ejecuta y aprende con los ejemplos interactivos</p>
+        </div>
+        <a href="index.html" class="btn" style="width: auto; padding: 10px 20px; background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); text-decoration: none; color: white;">
+            Volver al Curso
+        </a>
+    </header>
+
+    <main class="container">
+        <nav class="practice-nav">
+            <button class="nav-btn active" data-practice="1">Variables y Salida</button>
+            <button class="nav-btn" data-practice="2">Tipos de Datos</button>
+            <button class="nav-btn" data-practice="3">Operadores</button>
+            <button class="nav-btn" data-practice="4">Estructuras de Control</button>
+            <button class="nav-btn" data-practice="5">Ciclos</button>
+            <button class="nav-btn" data-practice="6">Arreglos</button>
+        </nav>
+
+        <section class="practice-container">
+            <!-- Práctica 1: Variables y Salida de Datos -->
+            <div class="practice-section active" id="practice-1">
+                <h2>1. Declaración de Variables y Salida de Datos</h2>
+                <div class="code-block">
+                    <h3>Para imprimir mensajes y manejar variables:</h3>
+                    <pre><code>console.log("¡Hola Mundo!");
+let nombre = "Carlos";
+let edad = 17;
+console.log(`Mi nombre es ${nombre} y tengo ${edad} años`);</code></pre>
+                    <button class="run-btn" onclick="runPractice1()">▶ Ejecutar</button>
+                    <div class="output" id="output-1"></div>
+                </div>
+                
+                <div class="code-block">
+                    <h3>Para declarar constantes y usarlas en cálculos:</h3>
+                    <pre><code>const PI = 3.14159;
+let radio = 5;
+let area = PI * radio * radio;
+console.log(`El área del círculo es: ${area}`);</code></pre>
+                    <button class="run-btn" onclick="runPractice1b()">▶ Ejecutar</button>
+                    <div class="output" id="output-1b"></div>
+                </div>
+            </div>
+
+            <!-- Práctica 2: Tipos de Datos -->
+            <div class="practice-section" id="practice-2">
+                <h2>2. Tipos de Datos</h2>
+                <div class="code-block">
+                    <h3>Declaración de diferentes tipos de datos:</h3>
+                    <pre><code>let texto = "Hola";
+let numero = 42;
+let esEstudiante = true;
+let sinValor;
+let vacio = null;
+
+console.log(typeof texto);         // "string"
+console.log(typeof numero);        // "number"
+console.log(typeof esEstudiante);  // "boolean"
+console.log(typeof sinValor);      // "undefined"</code></pre>
+                    <button class="run-btn" onclick="runPractice2()">▶ Ejecutar</button>
+                    <div class="output" id="output-2"></div>
+                </div>
+            </div>
+
+            <!-- Práctica 3: Operadores -->
+            <div class="practice-section" id="practice-3">
+                <h2>3. Operadores</h2>
+                <div class="code-block">
+                    <h3>Operadores aritméticos básicos:</h3>
+                    <pre><code>let suma = 10 + 5;          // Resultado: 15
+let resta = 10 - 3;         // Resultado: 7
+let multi = 4 * 3;          // Resultado: 12
+let division = 20 / 4;      // Resultado: 5
+let residuo = 10 % 3;       // Resultado: 1
+let potencia = 2 ** 3;      // Resultado: 8
+
+console.log(suma, resta, multi, division, residuo, potencia);</code></pre>
+                    <button class="run-btn" onclick="runPractice3a()">▶ Ejecutar</button>
+                    <div class="output" id="output-3a"></div>
+                </div>
+
+                <div class="code-block">
+                    <h3>Operadores de comparación:</h3>
+                    <pre><code>console.log(5 === 5);      // true
+console.log(5 === "5");    // false (número vs string)
+console.log(5 == "5");     // true (convierte tipos automáticamente)
+console.log(5 !== "5");    // true
+console.log(10 > 5);       // true
+console.log(3 < 1);        // false
+console.log(5 >= 5);       // true
+console.log(4 <= 3);       // false</code></pre>
+                    <button class="run-btn" onclick="runPractice3b()">▶ Ejecutar</button>
+                    <div class="output" id="output-3b"></div>
+                </div>
+
+                <div class="code-block">
+                    <h3>Operadores lógicos:</h3>
+                    <pre><code>let edad2 = 20; 
+let tieneCredencial = true;
+
+// AND (&&) 
+if (edad2 >= 18 && tieneCredencial) { 
+  console.log("Puede votar"); 
+}
+
+// OR (||)
+let esFinDeSemana = false; 
+let esVacaciones = true; 
+if (esFinDeSemana || esVacaciones) { 
+  console.log("¡No hay clases!"); 
+}
+
+// NOT (!)
+let lloviendo = false; 
+if (!lloviendo) { 
+  console.log("Podemos salir al patio"); 
+}</code></pre>
+                    <button class="run-btn" onclick="runPractice3c()">▶ Ejecutar</button>
+                    <div class="output" id="output-3c"></div>
+                </div>
+            </div>
+
+            <!-- Práctica 4: Estructuras de Control -->
+            <div class="practice-section" id="practice-4">
+                <h2>4. Estructuras de Control (Condicionales)</h2>
+                <div class="code-block">
+                    <h3>Uso básico de if y else:</h3>
+                    <pre><code>let edad = 16;
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres menor de edad");
+}</code></pre>
+                    <button class="run-btn" onclick="runPractice4a()">▶ Ejecutar</button>
+                    <div class="output" id="output-4a"></div>
+                </div>
+
+                <div class="code-block">
+                    <h3>Uso de else if para múltiples condiciones:</h3>
+                    <pre><code>let calificacion = 85;
+if (calificacion >= 90) {
+  console.log("Calificación: A — Excelente");
+} else if (calificacion >= 80) {
+  console.log("Calificación: B — Bueno");
+} else if (calificacion >= 70) {
+  console.log("Calificación: C — Regular");
+} else {
+  console.log("Calificación: F — Reprobado");
+}</code></pre>
+                    <button class="run-btn" onclick="runPractice4b()">▶ Ejecutar</button>
+                    <div class="output" id="output-4b"></div>
+                </div>
+
+                <div class="code-block">
+                    <h3>Estructura switch:</h3>
+                    <pre><code>let dia = 3;
+switch (dia) {
+  case 1: console.log("Lunes"); break;
+  case 2: console.log("Martes"); break;
+  case 3: console.log("Miércoles"); break;
+  case 4: console.log("Jueves"); break;
+  case 5: console.log("Viernes"); break;
+  default: console.log("Fin de semana");
+}</code></pre>
+                    <button class="run-btn" onclick="runPractice4c()">▶ Ejecutar</button>
+                    <div class="output" id="output-4c"></div>
+                </div>
+            </div>
+
+            <!-- Práctica 5: Ciclos -->
+            <div class="practice-section" id="practice-5">
+                <h2>5. Ciclos (Bucles)</h2>
+                <div class="code-block">
+                    <h3>Bucle for con repeticiones determinadas:</h3>
+                    <pre><code>for (let i = 1; i <= 5; i++) {
+  console.log(`Vuelta número: ${i}`);
+}</code></pre>
+                    <button class="run-btn" onclick="runPractice5a()">▶ Ejecutar</button>
+                    <div class="output" id="output-5a"></div>
+                </div>
+
+                <div class="code-block">
+                    <h3>Bucle while:</h3>
+                    <pre><code>let contador = 0;
+while (contador < 3) {
+  console.log(`Contador: ${contador}`);
+  contador++;
+}</code></pre>
+                    <button class="run-btn" onclick="runPractice5b()">▶ Ejecutar</button>
+                    <div class="output" id="output-5b"></div>
+                </div>
+            </div>
+
+            <!-- Práctica 6: Arreglos -->
+            <div class="practice-section" id="practice-6">
+                <h2>6. Arreglos (Arrays)</h2>
+                <div class="code-block">
+                    <h3>Creación y manipulación de arreglos:</h3>
+                    <pre><code>let frutas = ["Manzana", "Plátano", "Naranja", "Uva"];
+
+console.log(frutas[0]);         // "Manzana"
+console.log(frutas[2]);         // "Naranja"
+console.log(frutas.length);     // 4
+
+frutas.push("Fresa");           // Agrega al final
+frutas.pop();                   // Elimina el último elemento
+console.log(frutas);            // Muestra todo el array</code></pre>
+                    <button class="run-btn" onclick="runPractice6a()">▶ Ejecutar</button>
+                    <div class="output" id="output-6a"></div>
+                </div>
+
+                <div class="code-block">
+                    <h3>Recorrer un arreglo con bucle for:</h3>
+                    <pre><code>let estudiantes = ["Ana", "Luis", "María", "Pedro"];
+
+for (let i = 0; i < estudiantes.length; i++) {
+  console.log(`${i + 1}. ${estudiantes[i]}`);
+}</code></pre>
+                    <button class="run-btn" onclick="runPractice6b()">▶ Ejecutar</button>
+                    <div class="output" id="output-6b"></div>
+                </div>
+
+                <div class="code-block">
+                    <h3>Calcular promedio con decimales limitados:</h3>
+                    <pre><code>let cal1 = 92; 
+let cal2 = 92; 
+let cal3 = 78; 
+let promedio = (cal1 + cal2 + cal3) / 3; 
+console.log(`El promedio es: ${promedio.toFixed(2)}`);</code></pre>
+                    <button class="run-btn" onclick="runPractice6c()">▶ Ejecutar</button>
+                    <div class="output" id="output-6c"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align: center; margin-top: 60px; padding: 20px; border-top: 1px solid var(--glass-border);">
+                <p style="color: var(--text-secondary);">&copy; JMGV-PTEL-2026, CURSO DE JS. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="practicas.js"></script>
+    <script>
+      // Register Service Worker for PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registered', reg))
+            .catch(err => console.error('Service Worker registration failed', err));
+        });
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+:root {
+	/* Tema Oscuro / Terminal Moderno */
+	--bg-dark: #0a0e17;
+	--bg-card: #151b2b;
+	--bg-card-hover: #1e2638;
+	--primary: #3b82f6;
+	--secondary: #6366f1;
+	--accent: #10b981;
+	--accent-hover: #059669;
+	--text-main: #f3f4f6;
+	--text-muted: #9ca3af;
+	
+	/* Colores Semánticos */
+	--color-exito: #10b981;
+	--color-advertencia: #f59e0b;
+	--color-error: #ef4444;
+	--color-info: #3b82f6;
+
+	/* Terminal CMD */
+	--terminal-bg: #000000;
+	--terminal-text: #22c55e;
+	
+	/* Estilos UI */
+	--border-color: #374151;
+	--radius: 8px;
+	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	line-height: 1.6;
+	color: var(--text-main);
+	background-color: var(--bg-dark);
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+/* Tipografía */
+h1, h2, h3, h4 {
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--text-main);
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main); border-bottom: none;}
+h2 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); margin-top: 1.5rem; }
+h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+
+p { margin-bottom: 1rem; color: var(--text-muted); }
+
+/* Header & Barra Superior */
+header {
+	background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover));
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius);
+	padding: 3rem 2rem;
+	text-align: center;
+	margin-bottom: 2rem;
+	box-shadow: var(--shadow);
+}
+
+header .subtitle {
+	color: var(--accent);
+	font-size: 1.2rem;
+	margin-bottom: 0;
+}
+
+/* Progreso y Gamificación */
+.gamification-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--bg-card);
+	padding: 15px 20px;
+	border-radius: var(--radius);
+	border: 1px solid var(--border-color);
+	margin-bottom: 2rem;
+}
+
+.gamification-bar .stats {
+	display: flex;
+	gap: 20px;
+}
+
+.stat-badge {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 8px 15px;
+	border-radius: 20px;
+	font-weight: 600;
+}
+
+.stat-badge.points { color: #f59e0b; }
+.stat-badge.level { color: #10b981; }
+
+/* Tarjetas (Cards) */
+.session-card {
+	background: var(--bg-card);
+	border-radius: var(--radius);
+	border: 1px solid var(--border-color);
+	padding: 20px;
+	margin-bottom: 20px;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.session-card:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-lg);
+	border-color: var(--primary);
+}
+
+.session-card.special-card {
+	border-left: 4px solid var(--accent);
+}
+
+.session-header {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: var(--text-main);
+	border-bottom: 1px solid var(--border-color);
+	padding-bottom: 10px;
+}
+
+/* Bloques de Comando (Terminal) */
+.cmd-block {
+	background: var(--terminal-bg);
+	color: var(--terminal-text);
+	padding: 15px;
+	font-family: 'Consolas', 'Courier New', monospace;
+	border-radius: var(--radius);
+	margin: 15px 0;
+	border: 1px solid #333;
+	position: relative;
+	overflow-x: auto;
+}
+
+.cmd-block::before {
+	content: "CMD";
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #333;
+	color: #fff;
+	font-size: 0.7rem;
+	padding: 2px 8px;
+	border-bottom-left-radius: var(--radius);
+}
+
+/* Interfaz Interactiva de Comando */
+.ejercicio-interactivo {
+	background: rgba(16, 185, 129, 0.05);
+	border: 1px solid rgba(16, 185, 129, 0.2);
+	border-radius: var(--radius);
+	padding: 20px;
+	margin: 20px 0;
+}
+
+.input-comando {
+	display: flex;
+	align-items: center;
+	background: #000;
+	padding: 5px;
+	border-radius: 4px;
+	margin: 10px 0;
+}
+
+.input-comando .prompt {
+	color: #ccc;
+	padding: 0 10px;
+	font-family: 'Consolas', monospace;
+}
+
+.input-comando input {
+	flex-grow: 1;
+	background: transparent;
+	border: none;
+	color: var(--terminal-text);
+	font-family: 'Consolas', monospace;
+	font-size: 1rem;
+	outline: none;
+}
+
+.btn-primary, .btn-access {
+	display: inline-block;
+	background: var(--primary);
+	color: white;
+	padding: 10px 20px;
+	border-radius: var(--radius);
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background 0.3s ease;
+}
+
+.btn-primary:hover, .btn-access:hover {
+	background: #2563eb;
+}
+
+.btn-success {
+	background: var(--accent);
+}
+.btn-success:hover { background: var(--accent-hover); }
+
+/* Badges */
+.badge {
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 0.75rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-left: 10px;
+}
+.badge.basico { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+.badge.intermedio { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+.badge.avanzado { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+
+/* Alertas y Cajas de Notas */
+.note-box {
+	background: rgba(59, 130, 246, 0.1);
+	border-left: 4px solid var(--primary);
+	padding: 15px;
+	margin: 15px 0;
+	border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.danger-box {
+	background: rgba(239, 68, 68, 0.1);
+	border-left: 4px solid var(--color-error);
+	color: #fca5a5;
+	padding: 15px;
+	margin: 15px 0;
+	border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Utilidades */
+.feedback-msg { margin-top: 10px; padding: 10px; border-radius: 4px; font-weight: bold; display: none; }
+.feedback-msg.success { background: rgba(16, 185, 129, 0.2); color: #34d399; display: block; }
+.feedback-msg.error { background: rgba(239, 68, 68, 0.2); color: #f87171; display: block; }
+
+/* Grid de Sesiones (index) */
+.sessions-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+/* Sidebar y Layout (index) */
+.main-content {
+	display: grid;
+	grid-template-columns: 1fr 300px;
+	gap: 30px;
+}
+
+.sidebar {
+	background: var(--bg-card);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius);
+	padding: 20px;
+	position: sticky;
+	top: 20px;
+	height: fit-content;
+}
+
+.sidebar ul { list-style: none; }
+.sidebar li { margin-bottom: 10px; }
+.sidebar a {
+	color: var(--text-muted);
+	text-decoration: none;
+	transition: color 0.2s;
+	display: block;
+	padding: 8px 12px;
+	border-radius: 4px;
+}
+.sidebar a:hover {
+	color: var(--text-main);
+	background: rgba(255, 255, 255, 0.05);
+}
+
+footer {
+	text-align: center;
+	padding: 30px 0;
+	margin-top: 40px;
+	border-top: 1px solid var(--border-color);
+	color: var(--text-muted);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+	from { opacity: 0; transform: translateY(20px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+	animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.main-content { grid-template-columns: 1fr; }
+	.sessions-grid { grid-template-columns: 1fr; }
+	.gamification-bar { flex-direction: column; gap: 15px; }
+}
+
+@media print {
+	body { background: white; color: black; }
+	.gamification-bar, .sidebar, .btn-primary, button { display: none; }
+	.main-content { display: block; }
+	.session-card { border: 1px solid #ccc; break-inside: avoid; background: white; }
+	.cmd-block { border: 1px solid #ccc; color: black; background: #f4f4f4; }
+	* { box-shadow: none !important; }
+}
+
+/* ==========================================================================
+   Estilos del Quiz Kahoot (CMD)
+   ========================================================================== */
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .btn-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.btn-kahoot {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    text-align: left;
+    min-height: 80px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-kahoot:hover:not(:disabled) {
+    transform: translateY(-3px);
+    opacity: 0.9;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.btn-kahoot:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-red { background-color: #e21b3c; }
+.btn-blue { background-color: #1368ce; }
+.btn-yellow { background-color: #d89e00; }
+.btn-green { background-color: #26890c; }
+
+.shape-container {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.shape-triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 26px solid white;
+}
+
+.shape-diamond {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    transform: rotate(45deg);
+}
+
+.shape-circle {
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.shape-square {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+}
+
+.answer-text {
+    flex-grow: 1;
+}

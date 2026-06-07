@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guías y Tutoriales - Centro de Recursos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i> Guías y Tutoriales
+                </a>
+                <nav class="nav">
+                    <a href="#guias" class="nav-link active">Guías</a>
+                    <a href="#tutoriales" class="nav-link">Tutoriales</a>
+                    <a href="#recursos" class="nav-link">Recursos</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/hero-bg.jpg'); background-size: cover; background-position: center; color: white; text-align: center; padding: 6rem 0;">
+        <div class="container">
+            <h1>Bienvenido al Centro de Recursos</h1>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem;">
+                Encuentra guías detalladas, tutoriales paso a paso y recursos útiles para mejorar tu productividad y aprendizaje.
+            </p>
+            <a href="#guias" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2rem;">
+                <i class="fas fa-arrow-down"></i> Explorar Guías
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" style="padding: 3rem 0;">
+        <!-- Sección de Guías -->
+        <section id="guias" class="section">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Guías Destacadas</h2>
+            <div class="guides-grid">
+                <!-- Guía de VS Code -->
+                <article class="guide-card">
+                    <div class="guide-image" style="background-color: #0078d4;">
+                        <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: white; font-size: 2.5rem;">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="guide-content">
+                        <h3 class="guide-title">Guía de VS Code</h3>
+                        <p class="guide-description">Domina Visual Studio Code con esta guía completa de atajos, configuración y extensiones esenciales para desarrolladores.</p>
+                        <a href="guia_vscode_mejorada.html" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;">
+                            Ver Guía <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Guía de Correos -->
+                <article class="guide-card">
+                    <div class="guide-image" style="background-color: #e74c3c;">
+                        <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: white; font-size: 2.5rem;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="guide-content">
+                        <h3 class="guide-title">Envío de Correos</h3>
+                        <p class="guide-description">Aprende a enviar correos electrónicos con archivos adjuntos de manera profesional y efectiva.</p>
+                        <a href="guia de correos.html" class="btn btn-primary" style="margin-top: auto; align-self: flex-start;">
+                            Ver Guía <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Espacio para futuras guías -->
+                <article class="guide-card">
+                    <div class="guide-image" style="background-color: #2ecc71;">
+                        <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: white; font-size: 2.5rem;">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="guide-content">
+                        <h3 class="guide-title">Nueva Guía Próximamente</h3>
+                        <p class="guide-description">Estamos preparando nuevas guías para ti. ¡Vuelve pronto para descubrir más recursos útiles!</p>
+                        <a href="#" class="btn btn-outline" style="margin-top: auto; align-self: flex-start; cursor: not-allowed;" disabled>
+                            Próximamente
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección de Categorías -->
+        <section id="categorias" class="section" style="margin-top: 4rem;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Explorar por Categoría</h2>
+            <div class="guides-grid">
+                <div class="category-card" style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <div style="font-size: 2rem; color: #3498db; margin-bottom: 1rem;">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Desarrollo Web</h3>
+                    <p>Guías sobre HTML, CSS, JavaScript y frameworks modernos.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Explorar</a>
+                </div>
+                
+                <div class="category-card" style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <div style="font-size: 2rem; color: #e74c3c; margin-bottom: 1rem;">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Herramientas</h3>
+                    <p>Tutoriales de VS Code, Git, terminal y más herramientas esenciales.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Explorar</a>
+                </div>
+                
+                <div class="category-card" style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <div style="font-size: 2rem; color: #2ecc71; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Recursos Educativos</h3>
+                    <p>Materiales de estudio, técnicas de aprendizaje y más.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Explorar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acerca de</h3>
+                    <p>Centro de recursos educativos y guías prácticas para facilitar el aprendizaje y la productividad.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#guias">Guías</a></li>
+                        <li><a href="#tutoriales">Tutoriales</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" id="contacto">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> contacto@ejemplo.com</li>
+                        <li><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +52 123 456 7890</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 JMGV-PTEL. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de volver arriba -->
+    <a href="#" id="back-to-top" style="position: fixed; bottom: 20px; right: 20px; background: var(--secondary-color); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2); transition: all 0.3s ease; opacity: 0; visibility: hidden;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Botón de volver arriba
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.visibility = 'visible';
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.visibility = 'hidden';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

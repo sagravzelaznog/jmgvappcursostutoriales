@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia Web — Masterclasses de HTML, CSS y JS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+
+    <!-- ==================== PANTALLA DE LOGIN ==================== -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-card">
+            <div class="login-icon">
+                <i class="fas fa-user-astronaut"></i>
+            </div>
+            <h1>Academia Web</h1>
+            <p class="login-subtitle">Ingresa tus credenciales para acceder</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email-input" placeholder="Correo Electrónico (ej. alumno@prepa.edu)" autocomplete="email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password-input" placeholder="Contraseña secreta" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="btn btn-login glow-effect">
+                    <i class="fas fa-sign-in-alt"></i> Entrar a Clases
+                </button>
+                <p id="login-error" class="login-error" hidden>
+                    <i class="fas fa-exclamation-triangle"></i> Datos incorrectos o campos vacíos.
+                </p>
+            </form>
+        </div>
+        
+        <!-- Animación de fondo decorativa -->
+        <div class="cyber-grid"></div>
+    </div>
+
+    <!-- ==================== CONTENIDO DEL CURSO ==================== -->
+    <div id="app" class="app" hidden>
+
+        <header>
+            <div class="container header-flex">
+                <div class="header-logo">
+                    <i class="fas fa-code"></i>
+                    <div>
+                        <h1>Academia Web</h1>
+                        <p class="subtitle">Dominando HTML, CSS y JavaScript</p>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <span id="user-email-display">estudiante@prepa.edu</span>
+                    <button id="logout-btn" class="btn-logout" title="Cerrar sesión">
+                        <i class="fas fa-power-off"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="#inicio" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#masterclass1"><i class="fab fa-html5"></i> M1: HTML Básico</a></li>
+                    <li><a href="#masterclass2"><i class="fab fa-html5"></i> M2: HTML Pro</a></li>
+                    <li><a href="#masterclass3"><i class="fab fa-css3-alt"></i> M3: CSS Básico</a></li>
+                    <li><a href="#masterclass4"><i class="fab fa-css3-alt"></i> M4: CSS Layouts</a></li>
+                    <li><a href="#masterclass5"><i class="fab fa-js-square"></i> M5: JS Lógica</a></li>
+                    <li><a href="#masterclass6"><i class="fab fa-js-square"></i> M6: JS Interactivo</a></li>
+                    <li><a href="practicas.html" class="external-link" style="color: var(--accent-pink); border-color: var(--accent-pink);"><i class="fas fa-laptop-code"></i> Zona Prácticas</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="container">
+
+            <!-- ========== INICIO ========== -->
+            <section id="inicio" class="content-section active">
+                <div class="hero-section">
+                    <h2>¡Bienvenido a la Academia! 🚀</h2>
+                    <p>Conviértete en un desarrollador web desde cero. Selecciona una Masterclass para empezar tu entrenamiento.</p>
+                </div>
+
+                <div class="card-container">
+                    <div class="card" onclick="document.querySelector('a[href=\'#masterclass1\']').click()">
+                        <div class="card-icon html-color"><i class="fab fa-html5"></i></div>
+                        <h3>Masterclass 1</h3>
+                        <p>Fundamentos de HTML, estructura y etiquetas básicas.</p>
+                        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="card" onclick="document.querySelector('a[href=\'#masterclass2\']').click()">
+                        <div class="card-icon html-color"><i class="fas fa-list-ol"></i></div>
+                        <h3>Masterclass 2</h3>
+                        <p>HTML Pro: Formularios, Tablas y Semántica.</p>
+                        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="card" onclick="document.querySelector('a[href=\'#masterclass3\']').click()">
+                        <div class="card-icon css-color"><i class="fab fa-css3-alt"></i></div>
+                        <h3>Masterclass 3</h3>
+                        <p>Dale estilo a tu web: CSS Básico y Colores.</p>
+                        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="card" onclick="document.querySelector('a[href=\'#masterclass4\']').click()">
+                        <div class="card-icon css-color"><i class="fas fa-border-all"></i></div>
+                        <h3>Masterclass 4</h3>
+                        <p>Diseño responsivo: Flexbox y CSS Grid.</p>
+                        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="card" onclick="document.querySelector('a[href=\'#masterclass5\']').click()">
+                        <div class="card-icon js-color"><i class="fab fa-js-square"></i></div>
+                        <h3>Masterclass 5</h3>
+                        <p>Lógica de programación con JavaScript.</p>
+                        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="card" onclick="document.querySelector('a[href=\'#masterclass6\']').click()">
+                        <div class="card-icon js-color"><i class="fas fa-mouse-pointer"></i></div>
+                        <h3>Masterclass 6</h3>
+                        <p>Interactividad extrema: Manipulando el DOM.</p>
+                        <div class="progress-bar"><div class="progress" style="width: 0%;"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== MASTERCLASS 1 ========== -->
+            <section id="masterclass1" class="content-section">
+                <h2><i class="fab fa-html5 html-color"></i> Masterclass 1: Fundamentos de HTML</h2>
+                <div class="lesson-content">
+                    <h3>El Esqueleto de la Web</h3>
+                    <p>HTML (HyperText Markup Language) es el lenguaje que usamos para estructurar el contenido web.</p>
+                    <div class="code-editor">
+                        <div class="editor-header"><span>index.html</span></div>
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Mi Primera Web&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola Universo&lt;/h1&gt;
+    &lt;p&gt;Esta es mi primera página web usando HTML.&lt;/p&gt;
+    &lt;img src="foto.jpg" alt="Una foto genial"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h4>Etiquetas Principales:</h4>
+                        <ul>
+                            <li><code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>: Títulos principales y subtítulos.</li>
+                            <li><code>&lt;p&gt;</code>: Párrafos de texto.</li>
+                            <li><code>&lt;img&gt;</code>: Imágenes (No requiere etiqueta de cierre).</li>
+                            <li><code>&lt;a&gt;</code>: Enlaces a otras páginas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz-container-1">
+                    <!-- Quiz Inyectado por JS -->
+                </div>
+            </section>
+
+            <!-- ========== MASTERCLASS 2 ========== -->
+            <section id="masterclass2" class="content-section">
+                <h2><i class="fab fa-html5 html-color"></i> Masterclass 2: HTML Avanzado</h2>
+                <div class="lesson-content">
+                    <h3>Formularios y Estructuras de Datos</h3>
+                    <p>En esta sesión aprenderemos a crear encuestas, formularios de inicio de sesión y tablas de datos.</p>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header"><span>contacto.html</span></div>
+                        <pre><code>&lt;form action="/enviar" method="POST"&gt;
+    &lt;label for="nombre"&gt;Tu Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre" required&gt;
+    
+    &lt;label for="clave"&gt;Contraseña:&lt;/label&gt;
+    &lt;input type="password" id="clave" required&gt;
+    
+    &lt;button type="submit"&gt;Enviar Datos&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz-container-2"></div>
+            </section>
+
+            <!-- ========== MASTERCLASS 3 ========== -->
+            <section id="masterclass3" class="content-section">
+                <h2><i class="fab fa-css3-alt css-color"></i> Masterclass 3: CSS Básico</h2>
+                <div class="lesson-content">
+                    <h3>Diseño y Estilo</h3>
+                    <p>CSS es la "ropa" y el "maquillaje" de HTML. Te permite dar color, tamaño y posición.</p>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header"><span>style.css</span></div>
+                        <pre><code>/* Selector de etiqueta */
+body {
+    background-color: #1a1a2e;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* Selector de clase (punto) */
+.boton-cool {
+    background: #e94560;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Selector de ID (hashtag) */
+#titulo-principal {
+    font-size: 3rem;
+    text-align: center;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz-container-3"></div>
+            </section>
+
+            <!-- ========== MASTERCLASS 4 ========== -->
+            <section id="masterclass4" class="content-section">
+                <h2><i class="fab fa-css3-alt css-color"></i> Masterclass 4: CSS Avanzado (Layouts)</h2>
+                <div class="lesson-content">
+                    <h3>Flexbox y el Modelo de Caja</h3>
+                    <p>Acomodar elementos en la pantalla puede ser un dolor de cabeza, ¡hasta que conoces Flexbox!</p>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header"><span>layout.css</span></div>
+                        <pre><code>.contenedor-flex {
+    display: flex;
+    justify-content: space-between; /* Separa los elementos */
+    align-items: center; /* Los centra verticalmente */
+    gap: 20px; /* Espacio entre ellos */
+}
+
+/* El modelo de caja */
+.caja {
+    width: 200px;
+    padding: 20px; /* Espacio interno */
+    margin: 15px; /* Espacio externo (aleja de otros) */
+    border: 2px solid cyan;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz-container-4"></div>
+            </section>
+
+            <!-- ========== MASTERCLASS 5 ========== -->
+            <section id="masterclass5" class="content-section">
+                <h2><i class="fab fa-js-square js-color"></i> Masterclass 5: Lógica con JavaScript</h2>
+                <div class="lesson-content">
+                    <h3>El Cerebro de la Web</h3>
+                    <p>JS nos permite hacer operaciones, tomar decisiones (if/else) y repetir tareas (ciclos).</p>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header"><span>logica.js</span></div>
+                        <pre><code>// Variables
+let vidas = 3;
+const nivel = "Experto";
+
+// Condicionales (Tomar decisiones)
+if (vidas > 0) {
+    console.log("¡Sigue jugando!");
+} else {
+    console.log("Game Over");
+}
+
+// Ciclos (Repetir cosas)
+for(let i = 1; i <= 5; i++) {
+    console.log(`Disparo láser #${i}`);
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz-container-5"></div>
+            </section>
+
+            <!-- ========== MASTERCLASS 6 ========== -->
+            <section id="masterclass6" class="content-section">
+                <h2><i class="fab fa-js-square js-color"></i> Masterclass 6: Interacción y el DOM</h2>
+                <div class="lesson-content">
+                    <h3>Controlando la Pantalla</h3>
+                    <p>El DOM (Document Object Model) es la representación en JS de todo tu HTML. ¡Puedes modificar la página en vivo!</p>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header"><span>interactividad.js</span></div>
+                        <pre><code>// 1. Seleccionar un elemento HTML
+const boton = document.getElementById("miBoton");
+const titulo = document.querySelector(".titulo-principal");
+
+// 2. Agregar un "escuchador de eventos" (Click)
+boton.addEventListener("click", function() {
+    // 3. Modificar el HTML y CSS en vivo!
+    titulo.textContent = "¡Has hackeado la web!";
+    titulo.style.color = "lime";
+    
+    // Crear una alerta
+    alert("¡Botón presionado!");
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz-container-6"></div>
+            </section>
+
+        </main>
+        
+        <footer>
+            <p>Academia Web &copy; <span id="year"></span> | Creado para futuros desarrolladores.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+      // Register Service Worker for PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registered', reg))
+            .catch(err => console.error('Service Worker registration failed', err));
+        });
+      }
+    </script>
+</body>
+</html>

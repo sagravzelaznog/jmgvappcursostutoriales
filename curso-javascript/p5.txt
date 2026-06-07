@@ -1,0 +1,15 @@
+
+/*5. Ciclos (Bucles) Bucle for con un número determinado de repeticiones
+:*/
+for (let i = 1; i <= 5; i++) {
+  console.log(`Vuelta número: ${i}`);
+} 
+// Resultado: Vuelta número: 1, 2, 3, 4, 5
+/*Bucle while (asegurando el incremento del contador para evitar un ciclo infinito)
+:*/
+let contador = 0;
+while (contador < 3) {
+  console.log(`Contador: ${contador}`);
+  contador++; // Esencial para que el ciclo termine
+} 
+// Resultado: Contador: 0, 1, 2

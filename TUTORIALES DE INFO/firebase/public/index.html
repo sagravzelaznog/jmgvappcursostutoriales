@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Premium | Acceso & Validación</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .loading-container { display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 1.2rem; color: #666; }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="loading-container">
+            <i class="fas fa-circle-notch fa-spin"></i> &nbsp; Iniciando sistema seguro...
+        </div>
+    </div>
+
+    <script type="text/babel" data-type="module">
+        // Importamos Firebase directamente aquí dentro
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } 
+            from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, collection, query, where, getDocs } 
+            from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } 
+            from "https://www.gstatic.com/firebasejs/9.22.0/firebase-storage.js";
+
+        // React Hooks
+        const { useState, useEffect } = React;
+
+        // --- TU CONFIGURACIÓN (¡NO OLVIDES PEGAR TUS DATOS!) ---
+        const firebaseConfig = {
+            apiKey: "TU_API_KEY_AQUI",
+            authDomain: "TU_PROYECTO.firebaseapp.com",
+            projectId: "TU_PROYECTO_ID",
+            storageBucket: "TU_PROYECTO.appspot.com",
+            messagingSenderId: "NUMERO",
+            appId: "ID_APP"
+        };
+
+        // Inicializar
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // --- COMPONENTES ---
+
+        const LoadingSpinner = () => (
+            <div style={{textAlign: 'center', padding: '2rem'}}>
+                <i className="fas fa-circle-notch fa-spin"></i> Cargando datos...
+            </div>
+        );
+
+        // 1. LOGIN
+        const LoginView = () => {
+            const handleLogin = async () => {
+                const provider = new GoogleAuthProvider();
+                try { await signInWithPopup(auth, provider); } 
+                catch (e) { alert("Error: " + e.message); }
+            };
+            return (
+                <div className="card">
+                    <h1 className="title">Acceso Estudiantes</h1>
+                    <p className="subtitle">Identifícate para gestionar tu curso.</p>
+                    <button className="btn btn-google" onClick={handleLogin}>
+                        <i className="fab fa-google"></i> Entrar con Google
+                    </button>
+                </div>
+            );
+        };
+
+        // 2. PAGOS
+        const PaymentView = ({ user, refresh }) => {
+            const [file, setFile] = useState(null);
+            const [uploading, setUploading] = useState(false);
+
+            const handleUpload = async () => {
+                if(!file) return alert("Selecciona una imagen");
+                setUploading(true);
+                try {
+                    const storageRef = ref(storage, `comprobantes/${user.uid}/${Date.now()}_${file.name}`);
+                    await uploadBytes(storageRef, file);
+                    const url = await getDownloadURL(storageRef);
+                    
+                    await setDoc(doc(db, "users", user.uid), {
+                        email: user.email,
+                        status: "pending",
+                        proofUrl: url,
+                        updatedAt: new Date()
+                    }, { merge: true });
+                    
+                    alert("Enviado correctamente.");
+                    refresh();
+                } catch (e) {
+                    console.error(e);
+                    alert("Error al subir: " + e.message);
+                }
+                setUploading(false);
+            };
+
+            return (
+                <div className="card">
+                    <h2 className="title">Suscripción</h2>
+                    <p className="subtitle">Sube tu comprobante de pago.</p>
+                    <div className="qr-container">
+                        <i className="fas fa-qrcode qr-placeholder"></i>
+                        <p>Cuenta BBVA: 1234-5678</p>
+                    </div>
+                    <input type="file" onChange={e => setFile(e.target.files[0])} />
+                    <button className="btn btn-primary" onClick={handleUpload} disabled={uploading}>
+                        {uploading ? "Subiendo..." : "Enviar Comprobante"}
+                    </button>
+                    <button className="btn btn-outline" onClick={() => signOut(auth)}>Salir</button>
+                </div>
+            );
+        };
+
+        // 3. ESPERA
+        const PendingView = () => (
+            <div className="card">
+                <div className="status-badge status-pending">Validando</div>
+                <h2 className="title">Pago en Revisión</h2>
+                <p className="subtitle">Tu acceso será activado manualmente en breve.</p>
+                <button className="btn btn-outline" onClick={() => signOut(auth)}>Salir</button>
+            </div>
+        );
+
+        // 4. CONTENIDO (DASHBOARD)
+        const Dashboard = ({ user }) => (
+            <div className="card" style={{textAlign:'left'}}>
+                <div className="status-badge status-active">Activo</div>
+                <h1 className="title">Bienvenido al Curso</h1>
+                <p>Hola {user.displayName}, tienes acceso total.</p>
+                <hr style={{margin:'1rem 0', border:'0', borderTop:'1px solid #eee'}}/>
+                <p><strong>Módulo 1:</strong> Introducción a Firebase...</p>
+                <button className="btn btn-outline" style={{marginTop:'2rem'}} onClick={() => signOut(auth)}>Cerrar Sesión</button>
+            </div>
+        );
+
+        // 5. ADMIN (Mini panel)
+        const AdminPanel = () => {
+            const [users, setUsers] = useState([]);
+            useEffect(() => {
+                const q = query(collection(db, "users"), where("status", "==", "pending"));
+                return onSnapshot(q, s => setUsers(s.docs.map(d => ({id: d.id, ...d.data()}))));
+            }, []);
+
+            const approve = async (id) => updateDoc(doc(db, "users", id), { status: "active" });
+
+            return (
+                <div className="card">
+                    <h3>Panel Admin</h3>
+                    {users.map(u => (
+                        <div key={u.id} style={{borderBottom:'1px solid #eee', padding:'10px', textAlign:'left'}}>
+                            <small>{u.email}</small><br/>
+                            <a href={u.proofUrl} target="_blank">Ver foto</a>
+                            <button onClick={() => approve(u.id)} style={{float:'right'}}>Aprobar</button>
+                        </div>
+                    ))}
+                    <button className="btn btn-outline" onClick={() => signOut(auth)}>Salir</button>
+                </div>
+            );
+        };
+
+        // --- APP MAIN ---
+        const App = () => {
+            const [user, setUser] = useState(null);
+            const [profile, setProfile] = useState(null);
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+                return onAuthStateChanged(auth, async (u) => {
+                    if (u) {
+                        setUser(u);
+                        const snap = await getDoc(doc(db, "users", u.uid));
+                        setProfile(snap.exists() ? snap.data() : { status: 'none' });
+                    } else {
+                        setUser(null);
+                        setProfile(null);
+                    }
+                    setLoading(false);
+                });
+            }, []);
+
+            const refresh = async () => {
+                if(user) {
+                    const snap = await getDoc(doc(db, "users", user.uid));
+                    setProfile(snap.data());
+                }
+            };
+
+            if (loading) return <div className="app-container"><LoadingSpinner /></div>;
+            if (!user) return <div className="app-container"><LoginView /></div>;
+            
+            // ADMIN BACKDOOR (Cambia este email)
+            if (user.email === "manuel.vargas@uadec.edu.mx") return <div className="app-container"><AdminPanel /></div>;
+
+            if (profile?.status === 'active') return <div className="app-container"><Dashboard user={user} /></div>;
+            if (profile?.status === 'pending') return <div className="app-container"><PendingView /></div>;
+            
+            return <div className="app-container"><PaymentView user={user} refresh={refresh} /></div>;
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

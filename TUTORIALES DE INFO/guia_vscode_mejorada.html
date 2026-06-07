@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es" class="guide-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía completa de VS Code con atajos de teclado, configuración y trucos profesionales">
+    <title>Guía Profesional de VS Code</title>
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="guide-page">
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Inicio</a> &gt; <span>Guía VS Code</span>
+        </nav>
+        
+        <header class="guide-header">
+            <div class="container">
+                <h1 class="guide-title">Guía Profesional de VS Code</h1>
+                <p class="guide-subtitle">Aprende a dominar Visual Studio Code como un profesional</p>
+                <p class="subtitle">// Atajos, configuración y trucos para desarrolladores</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="content-card">
+                <h2>1. Configuración Inicial</h2>
+                <p>Configura VS Code para obtener la mejor experiencia de desarrollo:</p>
+                
+                <h3>Idioma Español</h3>
+                <ol>
+                    <li>Abre VS Code</li>
+                    <li>Presiona <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">X</span> para abrir Extensiones</li>
+                    <li>Busca: <strong>"Spanish Language Pack"</strong></li>
+                    <li>Haz clic en <strong>Install</strong></li>
+                    <li>Reinicia el editor cuando te lo pida</li>
+                </ol>
+
+                <h3>Temas Recomendados</h3>
+                <p>Personaliza la apariencia de tu editor con estos temas populares:</p>
+                <div class="shortcut-section">
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            <i class="fas fa-palette"></i> One Dark Pro
+                        </div>
+                        <div class="shortcut-desc">Tema oscuro con excelente contraste y colores vibrantes</div>
+                        <div class="shortcut-keys">
+                            <span class="shortcut-key">Ctrl</span> + <span class="shortcut-key">K</span> <span class="shortcut-key">Ctrl</span> + <span class="shortcut-key">T</span>
+                        </div>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            <i class="fas fa-moon"></i> Dracula Official
+                        </div>
+                        <div class="shortcut-desc">Paleta de colores oscuros con tonos púrpuras</div>
+                        <div class="shortcut-keys">
+                            <span class="shortcut-key">Ctrl</span> + <span class="shortcut-key">K</span> <span class="shortcut-key">Ctrl</span> + <span class="shortcut-key">T</span>
+                        </div>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            <i class="fas fa-owl"></i> Night Owl
+                        </div>
+                        <div class="shortcut-desc">Diseñado para programación nocturna</div>
+                        <div class="shortcut-keys">
+                            <span class="shortcut-key">Ctrl</span> + <span class="shortcut-key">K</span> <span class="shortcut-key">Ctrl</span> + <span class="shortcut-key">T</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>Para cambiar rápidamente entre temas, presiona <span class="shortcut">Ctrl</span> + <span class="shortcut">K</span> <span class="shortcut">Ctrl</span> + <span class="shortcut">T</span> y selecciona tu tema favorito.</p>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <h2>2. Configuración Avanzada (settings.json)</h2>
+                <p>Personaliza VS Code a tu gusto editando el archivo de configuración:</p>
+                <ol>
+                    <li>Presiona <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">P</span></li>
+                    <li>Escribe: <code>settings json</code></li>
+                    <li>Selecciona: <strong>"Preferences: Open User Settings (JSON)"</strong></li>
+                </ol>
+                
+                <div class="settings-json">
+                    <pre><span class="comment">// Configuración recomendada para VS Code</span>
+<span class="comment">// Archivo: settings.json</span>
+{
+    <span class="key">"editor.tabSize"</span>: <span class="number">2</span>,
+    <span class="key">"editor.fontSize"</span>: <span class="number">14</span>,
+    <span class="key">"editor.wordWrap"</span>: <span class="string">"on"</span>,
+    <span class="key">"editor.minimap.enabled"</span>: <span class="boolean">false</span>,
+    <span class="key">"files.autoSave"</span>: <span class="string">"afterDelay"</span>,
+    <span class="key">"files.autoSaveDelay"</span>: <span class="number">1000</span>,
+    <span class="key">"workbench.colorTheme"</span>: <span class="string">"One Dark Pro"</span>,
+    <span class="key">"workbench.iconTheme"</span>: <span class="string">"material-icon-theme"</span>,
+    <span class="key">"editor.bracketPairColorization.enabled"</span>: <span class="boolean">true</span>,
+    <span class="key">"emmet.includeLanguages"</span>: {
+        <span class="key">"javascript"</span>: <span class="string">"javascriptreact"</span>,
+        <span class="key">"vue-html"</span>: <span class="string">"html"</span>
+    },
+    <span class="key">"editor.formatOnSave"</span>: <span class="boolean">true</span>,
+    <span class="key">"editor.defaultFormatter"</span>: <span class="string">"esbenp.prettier-vscode"</span>,
+    <span class="key">"terminal.integrated.fontSize"</span>: <span class="number">13</span>,
+    <span class="key">"explorer.confirmDelete"</span>: <span class="boolean">false</span>,
+    <span class="key">"explorer.confirmDragAndDrop"</span>: <span class="boolean">false</span>,
+    <span class="key">"workbench.startupEditor"</span>: <span class="string">"welcomePageInEmptyWorkbench"</span>,
+    <span class="key">"javascript.updateImportsOnFileMove.enabled"</span>: <span class="string">"always"</span>,
+    <span class="key">"typescript.updateImportsOnFileMove.enabled"</span>: <span class="string">"always"</span>
+}</pre>
+                </div>
+                
+                <p>Para que los cambios surtan efecto, guarda el archivo con <span class="shortcut">Ctrl</span> + <span class="shortcut">S</span>.</p>
+            </section>
+
+            <section class="content-card">
+                <h2><i class="fas fa-keyboard"></i> 3. Atajos de Teclado Esenciales</h2>
+                <p class="intro-text">Domina VS Code con estos atajos de teclado que te ahorrarán tiempo y mejorarán tu flujo de trabajo diario.</p>
+                <p>Domina VS Code con estos atajos de teclado imprescindibles:</p>
+                
+                <div class="section-header">
+                    <h3><i class="fas fa-arrows-alt"></i> Navegación Básica</h3>
+                    <p>Atajos para moverte rápidamente por tu código</p>
+                </div>
+                <div class="shortcut-section">
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Abrir archivo rápido
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">P</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Busca y abre cualquier archivo en tu proyecto</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Ir a la definición
+                            <div class="shortcut-keys">
+                                <span class="shortcut">F12</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Navega a la definición de una función o variable</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Ir al símbolo en el archivo
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">O</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Busca símbolos en el archivo actual</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Mostrar comandos
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">P</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Accede a todos los comandos de VS Code</div>
+                    </div>
+                </div>
+
+                <h3>Edición Avanzada</h3>
+                <div class="shortcut-section">
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Duplicar línea
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Shift</span> + <span class="shortcut">Alt</span> + <span class="shortcut">↓</span>/<span class="shortcut">↑</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Duplica la línea actual o selección</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Mover línea
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Alt</span> + <span class="shortcut">↑</span>/<span class="shortcut">↓</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Mueve la línea actual hacia arriba o abajo</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Comentar/Descomentar
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">/</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Comenta o descomenta la línea o selección</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Formatear documento
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Shift</span> + <span class="shortcut">Alt</span> + <span class="shortcut">F</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Formatea el documento actual</div>
+                    </div>
+                </div>
+
+                <h3>Multi-cursor</h3>
+                <div class="shortcut-section">
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            <i class="fas fa-mouse-pointer"></i> Añadir cursor
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Alt</span> + <span class="shortcut">Click</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Añade un cursor en la posición del clic</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Seleccionar siguiente coincidencia
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">D</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Selecciona la siguiente coincidencia de la selección actual</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Seleccionar todas las coincidencias
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">L</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Selecciona todas las coincidencias de la selección actual</div>
+                    </div>
+                </div>
+
+                <h3>Terminal Integrado</h3>
+                <div class="shortcut-section">
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Abrir terminal
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">`</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Abre o cierra el terminal integrado</div>
+                    </div>
+
+                    <div class="shortcut-item">
+                        <div class="shortcut-command">
+                            Limpiar terminal
+                            <div class="shortcut-keys">
+                                <span class="shortcut">Ctrl</span> + <span class="shortcut">K</span>
+                            </div>
+                        </div>
+                        <div class="shortcut-desc">Limpia el contenido del terminal</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <h2>4. Extensiones Recomendadas</h2>
+                <p>Mejora tu productividad con estas extensiones esenciales:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Extensión</th>
+                            <th>Descripción</th>
+                            <th>Comando de Búsqueda</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ESLint</td>
+                            <td>Identifica y reporta patrones en código JavaScript/TypeScript</td>
+                            <td><code>dbaeumer.vscode-eslint</code></td>
+                        </tr>
+                        <tr>
+                            <td>Prettier</td>
+                            <td>Formateador de código con soporte para múltiples lenguajes</td>
+                            <td><code>esbenp.prettier-vscode</code></td>
+                        </tr>
+                        <tr>
+                            <td>Live Server</td>
+                            <td>Servidor de desarrollo local con recarga en vivo</td>
+                            <td><code>ritwickdey.LiveServer</code></td>
+                        </tr>
+                        <tr>
+                            <td>GitLens</td>
+                            <td>Supercarga las capacidades de Git integradas en VS Code</td>
+                            <td><code>eamodio.gitlens</code></td>
+                        </tr>
+                        <tr>
+                            <td>Material Icon Theme</td>
+                            <td>Iconos para una mejor identificación visual de archivos</td>
+                            <td><code>pkief.material-icon-theme</code></td>
+                        </tr>
+                        <tr>
+                            <td>Auto Rename Tag</td>
+                            <td>Renombra automáticamente las etiquetas HTML/XML emparejadas</td>
+                            <td><code>formulahendry.auto-rename-tag</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-card">
+                <h2>5. Trucos y Consejos</h2>
+                
+                <h3>Edición Rápida</h3>
+                <ul>
+                    <li><strong>Selección múltiple:</strong> Mantén presionado <span class="shortcut">Alt</span> y haz clic en diferentes posiciones para múltiples cursores</li>
+                    <li><strong>Seleccionar ocurrencias:</strong> Selecciona una palabra y presiona <span class="shortcut">Ctrl</span> + <span class="shortcut">D</span> para seleccionar la siguiente ocurrencia</li>
+                    <li><strong>Mover líneas:</strong> <span class="shortcut">Alt</span> + <span class="shortcut">↑</span>/<span class="shortcut">↓</span> para mover líneas hacia arriba o abajo</li>
+                    <li><strong>Duplicar línea:</strong> <span class="shortcut">Shift</span> + <span class="shortcut">Alt</span> + <span class="shortcut">↑</span>/<span class="shortcut">↓</span></li>
+                </ul>
+
+                <h3>Navegación Eficiente</h3>
+                <ul>
+                    <li><strong>Ir a línea:</strong> <span class="shortcut">Ctrl</span> + <span class="shortcut">G</span> y escribe el número de línea</li>
+                    <li><strong>Ir a definición:</strong> <span class="shortcut">F12</span> o <span class="shortcut">Ctrl</span> + clic</li>
+                    <li><strong>Volver atrás:</strong> <span class="shortcut">Alt</span> + <span class="shortcut">←</span></li>
+                    <li><strong>Ir adelante:</strong> <span class="shortcut">Alt</span> + <span class="shortcut">→</span></li>
+                </ul>
+
+                <h3>Atajos de Terminal</h3>
+                <ul>
+                    <li><strong>Abrir terminal:</strong> <span class="shortcut">Ctrl</span> + <span class="shortcut">`</span></li>
+                    <li><strong>Nueva terminal:</strong> <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span class="shortcut">`</span></li>
+                    <li><strong>Limpiar terminal:</strong> <span class="shortcut">Ctrl</span> + <span class="shortcut">K</span></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3><i class="fas fa-code"></i> Guía VS Code</h3>
+                        <p class="footer-text">Recursos para dominar Visual Studio Code</p>
+                        <p class="footer-text">Una guía completa para dominar Visual Studio Code y mejorar tu productividad como desarrollador.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Enlaces Rápidos</h3>
+                        <ul class="footer-links">
+                            <li class="footer-item"><a href="index.html">Inicio</a></li>
+                            <li class="footer-item"><a href="guia de correos.html">Guía de Correos</a></li>
+                            <li class="footer-item"><a href="#">Otras Guías</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p class="copyright-text">&copy; 2026 JMGV-PTEL. Guía de Productividad en VS Code. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

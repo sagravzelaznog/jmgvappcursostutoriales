@@ -1,0 +1,139 @@
+/*Aquí tienes todo el código práctico y los ejemplos extraídos directamente de tus fuentes, organizados para completar la teoría de tu curso de JavaScript:
+
+1. Declaración de Variables y Salida de Datos Para imprimir mensajes en la consola y manejar variables (texto y números) junto con template literals
+:*/
+console.log("¡Hola Mundo!");
+let nombre = "Carlos";
+let edad = 17;
+console.log(`Mi nombre es ${nombre} y tengo ${edad} años`);
+/*Para declarar constantes y utilizarlas en cálculos matemáticos
+:*/
+const PI = 3.14159;
+let radio = 5;
+let area = PI * radio * radio;
+console.log(`El área del círculo es: ${area}`);
+/*2. Tipos de Datos Ejemplo de cómo declarar diferentes tipos de datos y usar typeof para identificarlos
+:*/
+let texto = "Hola";
+let numero = 42;
+let esEstudiante = true;
+let sinValor;
+let vacio = null;
+
+console.log(typeof texto);         // "string"
+console.log(typeof numero);        // "number"
+console.log(typeof esEstudiante);  // "boolean"
+console.log(typeof sinValor);      // "undefined"
+/*3. Operadores Operadores aritméticos básicos, incluyendo módulo y potencia
+:*/
+let suma = 10 + 5;          // Resultado: 15
+let resta = 10 - 3;         // Resultado: 7
+let multi = 4 * 3;          // Resultado: 12
+let division = 20 / 4;      // Resultado: 5
+let residuo = 10 % 3;       // Resultado: 1
+let potencia = 2 ** 3;      // Resultado: 8 (2 elevado a la 3)
+
+console.log(suma, resta, multi, division, residuo, potencia);
+/*Operadores de comparación (usando siempre la igualdad estricta ===)
+:*/
+console.log(5 === 5);      // true
+console.log(5 === "5");    // false (número vs string)
+console.log(5 == "5");     // true (convierte tipos automáticamente)
+console.log(5 !== "5");    // true
+console.log(10 > 5);       // true
+console.log(3 < 1);        // false
+console.log(5 >= 5);       // true
+console.log(4 <= 3);       // false
+/*Operadores lógicos (AND &&, OR ||, NOT !)
+:*/
+let edad2 = 20; 
+let tieneCredencial = true;
+
+// AND (&&) 
+if (edad2 >= 18 && tieneCredencial) { 
+  console.log("Puede votar"); 
+}
+
+// OR (||)
+let esFinDeSemana = false; 
+let esVacaciones = true; 
+if (esFinDeSemana || esVacaciones) { 
+  console.log("¡No hay clases!"); 
+}
+
+// NOT (!)
+let lloviendo = false; 
+if (!lloviendo) { 
+  console.log("Podemos salir al patio"); 
+}
+/*4. Estructuras de Control (Condicionales) Uso básico de if y else
+:*/
+let edad = 16;
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres menor de edad");
+}
+/*Uso de else if para múltiples condiciones en cadena
+:*/
+let calificacion = 85;
+if (calificacion >= 90) {
+  console.log("Calificación: A — Excelente");
+} else if (calificacion >= 80) {
+  console.log("Calificación: B — Bueno");
+} else if (calificacion >= 70) {
+  console.log("Calificación: C — Regular");
+} else {
+  console.log("Calificación: F — Reprobado");
+}
+/*Estructura switch para comparar un valor exacto
+:*/
+let dia = 3;
+switch (dia) {
+  case 1: console.log("Lunes"); break;
+  case 2: console.log("Martes"); break;
+  case 3: console.log("Miércoles"); break; // dia es 3, así que entra aquí
+  case 4: console.log("Jueves"); break;
+  case 5: console.log("Viernes"); break;
+  default: console.log("Fin de semana");
+}
+/*5. Ciclos (Bucles) Bucle for con un número determinado de repeticiones
+:*/
+for (let i = 1; i <= 5; i++) {
+  console.log(`Vuelta número: ${i}`);
+} 
+// Resultado: Vuelta número: 1, 2, 3, 4, 5
+/*Bucle while (asegurando el incremento del contador para evitar un ciclo infinito)
+:*/
+let contador = 0;
+while (contador < 3) {
+  console.log(`Contador: ${contador}`);
+  contador++; // Esencial para que el ciclo termine
+} 
+// Resultado: Contador: 0, 1, 2
+/*6. Arreglos (Arrays) Creación, acceso y uso de métodos para modificar arreglos
+:*/
+let frutas = ["Manzana", "Plátano", "Naranja", "Uva"];
+
+console.log(frutas);         // "Manzana"
+console.log(frutas[2]);         // "Naranja"
+console.log(frutas.length);     // 4
+
+frutas.push("Fresa");           // Agrega al final
+frutas.pop();                   // Elimina el último elemento
+console.log(frutas);            // Muestra todo el array
+/*Uso de un bucle for para iterar (recorrer) dinámicamente sobre un arreglo
+:*/
+let estudiantes = ["Ana", "Luis", "María", "Pedro"];
+
+for (let i = 0; i < estudiantes.length; i++) {
+  console.log(`${i + 1}. ${estudiantes[i]}`);
+} 
+// Resultado: 1. Ana, 2. Luis, 3. María, 4. Pedro
+(Adicional) /*También tienes un ejemplo suelto sobre cómo limitar el número de decimales calculando un promedio usando .toFixed(2)
+:
+let cal2 = 92; 
+let cal3 = 78; 
+let promedio = (cal1 + cal2 + cal3) / 3; 
+console.log(`El promedio es: ${promedio.toFixed(2)}`);
+Sigo a tu disposición por si decides que agrupemos este código o los conceptos previos en un cuestionario interactivo o tarjetas de estudio. ¡Mucho éxito repasando tu código!

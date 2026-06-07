@@ -1,0 +1,14 @@
+/*Aquí tienes todo el código práctico y los ejemplos extraídos directamente de tus fuentes, organizados para completar la teoría de tu curso de JavaScript:
+
+1. Declaración de Variables y Salida de Datos Para imprimir mensajes en la consola y manejar variables (texto y números) junto con template literals
+:*/
+console.log("¡Hola Mundo!");
+let nombre = "Carlos";
+let edad = 17;
+console.log(`Mi nombre es ${nombre} y tengo ${edad} años`);
+/*Para declarar constantes y utilizarlas en cálculos matemáticos
+:*/
+const PI = 3.14159;
+let radio = 5;
+let area = PI * radio * radio;
+console.log(`El área del círculo es: ${area}`);

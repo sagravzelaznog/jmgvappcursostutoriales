@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planeación Profesional CMD - JMGV</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <header>
+            <h1>Maestría en Command Prompt (CMD)</h1>
+            <p><strong>Instructor:</strong> JMGV-PTEL</p>
+            <p><strong>Nivel:</strong> De Cero a Ninja de la Terminal</p>
+        </header>
+
+        <div id="content" class="content-body" style="padding: 20px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2>📚 Temario y Planeación del Curso</h2>
+                <p>Este curso está diseñado andragógicamente para llevarte desde los conceptos más básicos hasta la automatización avanzada mediante scripts por lotes.</p>
+            </div>
+            
+            <div class="syllabus-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 20px;">
+                <!-- Sesiones 1 a 4 -->
+                <div class="session-card animate-fade" style="animation-delay: 0.1s;">
+                    <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Módulo I: Fundamentos y Navegación</h3>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><span class="badge basico">S01</span> Fundamentos y Entorno</li>
+                        <li style="margin-bottom: 10px;"><span class="badge basico">S02</span> Navegación de Directorios</li>
+                        <li style="margin-bottom: 10px;"><span class="badge basico">S03</span> Gestión de Archivos</li>
+                        <li style="margin-bottom: 10px;"><span class="badge basico">S04</span> Atributos y Seguridad</li>
+                    </ul>
+                </div>
+                
+                <!-- Sesiones 5 a 8 -->
+                <div class="session-card animate-fade" style="animation-delay: 0.2s;">
+                    <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Módulo II: Discos y Procesos</h3>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><span class="badge intermedio">S05</span> Gestión de Unidades</li>
+                        <li style="margin-bottom: 10px;"><span class="badge intermedio">S06</span> Control de Tareas</li>
+                        <li style="margin-bottom: 10px;"><span class="badge intermedio">S07</span> Permisos y Propiedad</li>
+                        <li style="margin-bottom: 10px;"><span class="badge intermedio">S08</span> Diagnóstico de Red</li>
+                    </ul>
+                </div>
+                
+                <!-- Sesiones 9 a 12 -->
+                <div class="session-card animate-fade" style="animation-delay: 0.3s;">
+                    <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Módulo III: Redes y Sistema</h3>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><span class="badge avanzado">S09</span> Conexiones y Puertos</li>
+                        <li style="margin-bottom: 10px;"><span class="badge avanzado">S10</span> Rutas y Trazado</li>
+                        <li style="margin-bottom: 10px;"><span class="badge avanzado">S11</span> Información del Sistema</li>
+                        <li style="margin-bottom: 10px;"><span class="badge avanzado">S12</span> Usuarios y Grupos</li>
+                    </ul>
+                </div>
+
+                <!-- Sesiones 13 a 16 -->
+                <div class="session-card animate-fade" style="animation-delay: 0.4s;">
+                    <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Módulo IV: Automatización</h3>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><span class="badge experto">S13</span> Archivos por Lotes (Batch)</li>
+                        <li style="margin-bottom: 10px;"><span class="badge experto">S14</span> Variables de Entorno</li>
+                        <li style="margin-bottom: 10px;"><span class="badge experto">S15</span> Condicionales y Bucles</li>
+                        <li style="margin-bottom: 10px;"><span class="badge experto">S16</span> Programación de Tareas</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <a href="index.html" class="btn-primary">⬅ Volver al Menú Principal</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Copyright &copy; 2026-JMGV-PTEL. Planeación CMD. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+
+    <!-- Librerías de Firebase y Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    
+    <!-- Variables de entorno seguras -->
+    <script src="js/env.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+
+    <!-- Librerías para Generar PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- Lógica del Quiz Interactivo -->
+    <script src="js/quizData.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+/*6. Arreglos (Arrays) Creación, acceso y uso de métodos para modificar arreglos
+:*/
+let frutas = ["Manzana", "Plátano", "Naranja", "Uva"];
+
+console.log(frutas);         // "Manzana"
+console.log(frutas[2]);         // "Naranja"
+console.log(frutas.length);     // 4
+
+frutas.push("Fresa");           // Agrega al final
+frutas.pop();                   // Elimina el último elemento
+console.log(frutas);            // Muestra todo el array
+/*Uso de un bucle for para iterar (recorrer) dinámicamente sobre un arreglo
+:*/
+let estudiantes = ["Ana", "Luis", "María", "Pedro"];
+
+for (let i = 0; i < estudiantes.length; i++) {
+  console.log(`${i + 1}. ${estudiantes[i]}`);
+} 
+// Resultado: 1. Ana, 2. Luis, 3. María, 4. Pedro
+(Adicional) /*También tienes un ejemplo suelto sobre cómo limitar el número de decimales calculando un promedio usando .toFixed(2)
+:*/
+let cal1 = 92; 
+let cal2 = 92; 
+let cal3 = 78; 
+let promedio = (cal1 + cal2 + cal3) / 3; 
+console.log(`El promedio es: ${promedio.toFixed(2)}`);
+/*Sigo a tu disposición por si decides que agrupemos este código o los conceptos previos en un cuestionario interactivo o tarjetas de estudio. ¡Mucho éxito repasando tu código!

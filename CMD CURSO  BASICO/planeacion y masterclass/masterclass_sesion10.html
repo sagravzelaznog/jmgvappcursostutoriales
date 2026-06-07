@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass S10: Discos y Particiones | JMGV</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate-fade">
+        <!-- Panel Gamificación -->
+        <div class="gamification-bar">
+            <div>
+                <h3>👨‍💻 Tu Progreso</h3>
+                <p style="margin: 0; font-size: 0.9rem;">Prueba los comandos para ganar puntos.</p>
+            </div>
+            <div class="stats">
+                <div class="stat-badge points">
+                    <span>🏆</span> Puntos: <span id="user-points">0</span>
+                </div>
+                <div class="stat-badge level">
+                    <span>⭐</span> Nivel: <span id="user-level">Principiante</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor del contenido inyectado por JS -->
+        <div id="masterclass-content"></div>
+
+        <div class="nav-buttons">
+            <a href="masterclass_sesion09.html" class="btn-primary">⬅ Anterior</a>
+            <a href="index.html" class="btn-access">🏠 Menú Principal</a>
+            <a href="masterclass_sesion11.html" class="btn-primary">Siguiente ➡</a>
+        </div>
+
+        <footer>
+            <p>&copy; JMGV-PTEL-2026. Masterclass Sesión 10. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts Globales y Específicos -->
+    <script src="script.js"></script>
+    <script src="script_masterclass_s10.js"></script>
+
+    <!-- Librerías de Firebase y Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    
+    <!-- Variables de entorno seguras -->
+    <script src="js/env.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+
+    <!-- Librerías para Generar PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- Lógica del Quiz Interactivo -->
+    <script src="js/quizData.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

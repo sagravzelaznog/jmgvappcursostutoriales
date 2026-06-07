@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1.6: Listas y tuplas - Curso de IA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .solution {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #1e8449;
+        }
+        
+        .hint-button {
+            background-color: #1e8449;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .hint-button:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .code-example {
+            margin: 1.5rem 0;
+        }
+
+        .code-example h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="session-header">
+        <div class="container">
+            <h1>Sesión 1.6: Listas y tuplas en Python</h1>
+            <p class="session-meta">Módulo 1: Introducción a Python | Duración: 60 minutos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender qué son las listas y tuplas en Python</li>
+                <li>Aprender a crear, acceder y modificar listas</li>
+                <li>Entender las diferencias entre listas y tuplas</li>
+                <li>Dominar los métodos más útiles de las listas</li>
+                <li>Aplicar estos conceptos en ejercicios prácticos</li>
+            </ul>
+        </section>
+
+        <section class="content">
+            <h2><i class="fas fa-book"></i> Contenido Teórico</h2>
+            
+            <article class="concept">
+                <h3>1. Introducción a las listas</h3>
+                <p>Las listas son una de las estructuras de datos más versátiles en Python. Pueden contener elementos de diferentes tipos y son mutables (se pueden modificar después de su creación).</p>
+                
+                <div class="code-example">
+                    <h4>Creación de listas</h4>
+                    <pre><code class="language-python"># Lista vacía
+mi_lista = []
+
+# Lista con elementos iniciales
+numeros = [1, 2, 3, 4, 5]
+frutas = ['manzana', 'banana', 'cereza']
+mezcla = [1, 'dos', 3.0, True]
+
+# Usando el constructor list()
+otra_lista = list((1, 2, 3))  # Nota el doble paréntesis</code></pre>
+                </div>
+
+                <h4>1.1 Acceso a elementos</h4>
+                <p>Los elementos de una lista se pueden acceder mediante índices, que comienzan en 0.</p>
+                <pre><code class="language-python">frutas = ['manzana', 'banana', 'cereza', 'dátil']
+print(frutas[0])    # 'manzana'
+print(frutas[-1])   # 'dátil' (último elemento)
+print(frutas[1:3])  # ['banana', 'cereza'] (slicing)</code></pre>
+
+                <h4>1.2 Métodos útiles de listas</h4>
+                <pre><code class="language-python"># Agregar elementos
+frutas.append('kiwi')        # Añade al final
+frutas.insert(1, 'naranja')  # Inserta en posición específica
+
+# Eliminar elementos
+frutas.remove('banana')      # Elimina el primer elemento con ese valor
+del frutas[0]               # Elimina por índice
+valor = frutas.pop()         # Elimina y devuelve el último elemento
+
+# Otras operaciones
+frutas.sort()               # Ordena la lista
+frutas.reverse()            # Invierte el orden
+nueva_lista = frutas.copy() # Crea una copia superficial</code></pre>
+            </article>
+
+            <article class="concept">
+                <h3>2. Tuplas en Python</h3>
+                <p>Las tuplas son similares a las listas pero son inmutables (no se pueden modificar después de su creación). Se definen con paréntesis o simplemente separando los elementos por comas.</p>
+                
+                <div class="code-example">
+                    <h4>Creación de tuplas</h4>
+                    <pre><code class="language-python"># Tupla vacía
+mi_tupla = ()
+
+# Tupla con un solo elemento (necesita una coma)
+singleton = ('hola',)
+
+# Múltiples elementos
+colores = ('rojo', 'verde', 'azul')
+
+# Empaquetado/desempaquetado
+a, b, c = colores  # a='rojo', b='verde', c='azul'</code></pre>
+                </div>
+
+                <h4>2.1 ¿Cuándo usar tuplas?</h4>
+                <ul>
+                    <li>Cuando los datos no deben cambiar (inmutabilidad)</li>
+                    <li>Para claves en diccionarios (las listas no son hashables)</li>
+                    <li>Para mejorar el rendimiento (son más rápidas que las listas)</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="practical-activity">
+            <h2><i class="fas fa-laptop-code"></i> Ejercicios Prácticos</h2>
+            
+            <div class="exercise">
+                <h4><i class="fas fa-pencil-alt"></i> Ejercicio 1: Estadísticas de lista</h4>
+                <p>Crea una función que reciba una lista de números y devuelva un diccionario con la suma, promedio, valor máximo y valor mínimo.</p>
+                
+                <button class="hint-button" onclick="toggleHint('solucion1')">Mostrar Solución</button>
+                <div id="solucion1" class="solution">
+                    <pre><code class="language-python">def estadisticas_lista(numeros):
+    """
+    Calcula estadísticas básicas de una lista de números.
+    
+    Args:
+        numeros (list): Lista de números
+        
+    Returns:
+        dict: Diccionario con suma, promedio, máximo y mínimo
+    """
+    if not numeros:  # Si la lista está vacía
+        return {
+            'suma': 0,
+            'promedio': 0,
+            'maximo': None,
+            'minimo': None
+        }
+        
+    return {
+        'suma': sum(numeros),
+        'promedio': sum(numeros) / len(numeros),
+        'maximo': max(numeros),
+        'minimo': min(numeros)
+    }
+
+# Ejemplo de uso
+numeros = [10, 20, 30, 40, 50]
+resultado = estadisticas_lista(numeros)
+print(f"Suma: {resultado['suma']}")
+print(f"Promedio: {resultado['promedio']:.2f}")
+print(f"Máximo: {resultado['maximo']}")
+print(f"Mínimo: {resultado['minimo']}")</code></pre>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4><i class="fas fa-pencil-alt"></i> Ejercicio 2: Filtrado de elementos</h4>
+                <p>Crea una función que reciba una lista de números y devuelva dos listas: una con los números pares y otra con los impares.</p>
+                
+                <button class="hint-button" onclick="toggleHint('solucion2')">Mostrar Solución</button>
+                <div id="solucion2" class="solution">
+                    <pre><code class="language-python">def separar_pares_impares(numeros):
+    """
+    Separa una lista de números en pares e impares.
+    
+    Args:
+        numeros (list): Lista de números enteros
+        
+    Returns:
+        tuple: (lista_pares, lista_impares)
+    """
+    pares = [num for num in numeros if num % 2 == 0]
+    impares = [num for num in numeros if num % 2 != 0]
+    return pares, impares
+
+# Ejemplo de uso
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+pares, impares = separar_pares_impares(numeros)
+print(f"Números pares: {pares}")
+print(f"Números impares: {impares}")</code></pre>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4><i class="fas fa-pencil-alt"></i> Ejercicio 3: Gestor de tareas</h4>
+                <p>Crea un programa que permita gestionar una lista de tareas. Debe permitir agregar, eliminar, marcar como completada y mostrar las tareas.</p>
+                
+                <button class="hint-button" onclick="toggleHint('solucion3')">Mostrar Solución</button>
+                <div id="solucion3" class="solution">
+                    <pre><code class="language-python">def mostrar_menu():
+    print("\n--- Gestor de Tareas ---")
+    print("1. Ver tareas")
+    print("2. Agregar tarea")
+    print("3. Marcar tarea como completada")
+    print("4. Eliminar tarea")
+    print("5. Salir")
+    return input("Selecciona una opción: ")
+
+def main():
+    tareas = []
+    
+    while True:
+        opcion = mostrar_menu()
+        
+        if opcion == '1':
+            if not tareas:
+                print("\nNo hay tareas pendientes.")
+            else:
+                print("\n--- Tareas Pendientes ---")
+                for i, tarea in enumerate(tareas, 1):
+                    estado = "✓" if tarea['completada'] else " "
+                    print(f"{i}. [{estado}] {tarea['descripcion']}")
+                    
+        elif opcion == '2':
+            descripcion = input("\nIngresa la descripción de la tarea: ")
+            tareas.append({'descripcion': descripcion, 'completada': False})
+            print("¡Tarea agregada con éxito!")
+            
+        elif opcion == '3':
+            if not tareas:
+                print("\nNo hay tareas para marcar como completadas.")
+                continue
+                
+            print("\n--- Tareas Pendientes ---")
+            for i, tarea in enumerate(tareas, 1):
+                if not tarea['completada']:
+                    print(f"{i}. {tarea['descripcion']}")
+                    
+            try:
+                num = int(input("\nNúmero de tarea a marcar como completada: ")) - 1
+                if 0 <= num < len(tareas) and not tareas[num]['completada']:
+                    tareas[num]['completada'] = True
+                    print("¡Tarea marcada como completada!")
+                else:
+                    print("Número de tarea inválido o ya está completada.")
+            except ValueError:
+                print("Por favor, ingresa un número válido.")
+                
+        elif opcion == '4':
+            if not tareas:
+                print("\nNo hay tareas para eliminar.")
+                continue
+                
+            print("\n--- Tareas ---")
+            for i, tarea in enumerate(tareas, 1):
+                estado = "✓" if tarea['completada'] else " "
+                print(f"{i}. [{estado}] {tarea['descripcion']}")
+                
+            try:
+                num = int(input("\nNúmero de tarea a eliminar: ")) - 1
+                if 0 <= num < len(tareas):
+                    tarea_eliminada = tareas.pop(num)
+                    print(f"Tarea eliminada: {tarea_eliminada['descripcion']}")
+                else:
+                    print("Número de tarea inválido.")
+            except ValueError:
+                print("Por favor, ingresa un número válido.")
+                
+        elif opcion == '5':
+            print("\n¡Gracias por usar el Gestor de Tareas! ¡Hasta luego!")
+            break
+            
+        else:
+            print("\nOpción no válida. Por favor, intenta de nuevo.")
+
+if __name__ == "__main__":
+    main()</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; JMGV-PTEL-2025 Curso de Inteligencia Artificial - Todos los derechos reservados</p>
+            <div class="navigation">
+                <a href="SESION1-5.html" class="btn"><i class="fas fa-arrow-left"></i> Sesión Anterior: 1.5 Funciones y Módulos</a>
+                <a href="index.html" class="btn"><i class="fas fa-home"></i> Inicio</a>
+                <a href="SESION1-7.html" class="btn">Siguiente Sesión: 1.7 Diccionarios y Conjuntos <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para mostrar/ocultar soluciones
+        function toggleHint(elementId) {
+            const element = document.getElementById(elementId);
+            if (element.style.display === 'none' || element.style.display === '') {
+                element.style.display = 'block';
+                element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                element.style.display = 'none';
+            }
+        }
+        
+        // Asegurar que las soluciones estén ocultas al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.solution').forEach(solution => {
+                solution.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

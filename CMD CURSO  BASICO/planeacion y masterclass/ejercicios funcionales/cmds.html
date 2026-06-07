@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass: Organización de Archivos con CMD</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header style="position: relative;">
+        <a href="../index.html" style="position: absolute; top: 20px; left: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 4px;">⬅ Volver al Menú</a>
+        <div class="header-content">
+            <h1>💻 Masterclass: Domina la Terminal</h1>
+            <p>Aprende a mover y organizar archivos masivamente usando CMD.</p>
+        </div>
+        <button id="btn-profesor" onclick="unlockTeacherMode()">Modo Maestro</button>
+    </header>
+
+    <main>
+        <section class="lesson-section">
+            <h2>1. El Reto: Archivos Desordenados</h2>
+            <p>Todos tenemos esa carpeta llena de documentos, imágenes y descargas mezcladas. En lugar de arrastrar uno por uno, aprenderemos a pedirle a la computadora que mueva todos los archivos de un mismo tipo a una carpeta con el nombre que nosotros decidamos.</p>
+            
+            <div class="teacher-tip">
+                <strong>👨‍🏫 Tip para el Profesor:</strong> (Andragogía) Comienza preguntando a los alumnos cuántos archivos tienen en su carpeta de "Descargas". El dolor de tener que organizarlos manualmente creará la motivación intrínseca para aprender el comando.
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>2. La Fórmua Mágica: El comando MOVE</h2>
+            <p>Usaremos el Símbolo del Sistema (CMD). El comando para lograr nuestro objetivo sigue esta estructura básica:</p>
+            
+            <div class="code-container">
+                <code>move *.extension "Nombre de Carpeta"</code>
+            </div>
+
+            <div class="teacher-tip">
+                <strong>👨‍🏫 Tip para el Profesor:</strong> Antes de que ejecuten el comando, asegúrate de pedirles que creen una carpeta de prueba ("LaboratorioCMD") con algunos archivos de mentira. ¡Nunca se debe practicar por primera vez en carpetas de sistema!
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>3. Desglose del Código y Ejemplos</h2>
+            
+            <div class="breakdown-grid">
+                <div class="breakdown-card">
+                    <h3>A. <code>move</code> (La Acción)</h3>
+                    <p>Es la orden directa al sistema para trasladar uno o varios elementos de un lugar a otro.</p>
+                    <ul>
+                        <li><code>move archivo.txt Carpeta</code> <em>(Mueve un archivo específico)</em></li>
+                        <li><code>move /Y *.jpg Fotos</code> <em>(Mueve y sobreescribe sin preguntar usando /Y)</em></li>
+                        <li><code>move /-Y *.pdf Tareas</code> <em>(Mueve pero te pregunta antes de reemplazar)</em></li>
+                    </ul>
+                </div>
+
+                <div class="breakdown-card">
+                    <h3>B. <code>*.extension</code> (El Origen / Comodín)</h3>
+                    <p>El asterisco (<code>*</code>) es un "comodín" que significa "TODO". Al juntarlo con un punto y una extensión, selecciona todos los archivos de ese tipo.</p>
+                    <ul>
+                        <li><code>*.mp3</code> <em>(Selecciona toda la música mp3)</em></li>
+                        <li><code>reporte_*.xlsx</code> <em>(Selecciona archivos Excel que empiecen con "reporte_")</em></li>
+                        <li><code>*.*</code> <em>(Peligro: Selecciona absolutamente TODOS los archivos)</em></li>
+                    </ul>
+                </div>
+
+                <div class="breakdown-card">
+                    <h3>C. <code>"Nombre Asignado"</code> (El Destino)</h3>
+                    <p>Es el lugar a donde irán los archivos. Si el nombre de la carpeta tiene espacios, <strong>debe ir entre comillas</strong>.</p>
+                    <ul>
+                        <li><code>"Mis Documentos Importantes"</code> <em>(Uso de comillas por los espacios)</em></li>
+                        <li><code>C:\Respaldos\Fotos</code> <em>(Enviando a una ruta absoluta específica)</em></li>
+                        <li><code>..\CarpetaAnterior</code> <em>(Subiendo un nivel en los directorios)</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="teacher-tip">
+                <strong>👨‍🏫 Tip para el Profesor:</strong> Recuérdales que la carpeta de destino ya debe existir. Si no existe, pueden crearla rápidamente escribiendo <code>mkdir "Nombre Asignado"</code> justo antes de usar el comando move.
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>🧠 Demuestra tu Conocimiento</h2>
+            <p>Responde este Quiz de 10 preguntas para validar lo que has aprendido.</p>
+            
+            <div id="quiz-container" class="quiz-container">
+                <div id="question-header" class="question-header">
+                    <span id="question-counter">Pregunta 1 de 10</span>
+                </div>
+                <h3 id="question-text">Cargando pregunta...</h3>
+                <div id="answer-buttons" class="btn-grid">
+                    </div>
+                <div id="score-container" class="hidden">
+                    <h2 id="final-score"></h2>
+                    <button id="restart-btn" onclick="startQuiz()">Reintentar Masterclass</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>copyright &copy;jmgv-ptel- 2026. masterclass clasificacion de archivos con cmd. todos los derechos reservados</p>
+    </footer>
+
+    <script src="script2.js"></script>
+</body>
+</html>

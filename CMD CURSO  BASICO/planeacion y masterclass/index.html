@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Masterclass CMD - JMGV-PTEL</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div class="container">
+		<header class="animate-fade">
+			<h1>Masterclass CMD</h1>
+			<p class="subtitle">Curso Básico e Intermedio de Línea de Comandos de Windows</p>
+			<button onclick="window.print()" class="btn-primary" style="margin-top: 15px;">Imprimir/Guardar PDF</button>
+		</header>
+
+		<!-- Gamification Panel -->
+		<div class="gamification-bar animate-fade" style="animation-delay: 0.1s;">
+			<div>
+				<h3>👨‍💻 Tu Progreso</h3>
+				<p style="margin: 0; font-size: 0.9rem;">Completa ejercicios para ganar puntos y subir de nivel.</p>
+			</div>
+			<div class="stats">
+				<div class="stat-badge points">
+					<span>🏆</span> Puntos: <span id="user-points">0</span>
+				</div>
+				<div class="stat-badge level">
+					<span>⭐</span> Nivel: <span id="user-level">Principiante</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="main-content animate-fade" style="animation-delay: 0.2s;">
+			<div class="sessions-container">
+				<h2>Sesiones del Curso</h2>
+				<div class="sessions-grid">
+
+					<div class="session-card">
+						<div class="session-header">Sesión 1: Fundamentos y Entorno <span
+								class="badge basico">Básico</span></div>
+						<div class="session-body">
+							<p>Configuración del Shell, personalización visual y privilegios de Administrador.</p>
+							<a href="masterclass_sesion01.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 2: Navegación <span class="badge basico">Básico</span></div>
+						<div class="session-body">
+							<p>Dominio de rutas absolutas/relativas y exploración del árbol de directorios (CD y DIR).
+							</p>
+							<a href="masterclass_sesion02.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 3: Gestión de Archivos <span
+								class="badge basico">Básico</span></div>
+						<div class="session-body">
+							<p>Técnicas de copiado, movimiento y eliminación segura de datos (Copy, Move, Del).</p>
+							<a href="masterclass_sesion03.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 4: Arquitectura <span class="badge basico">Básico</span>
+						</div>
+						<div class="session-body">
+							<p>Creación de estructuras complejas y visualización jerárquica (Mkdir, Tree).</p>
+							<a href="masterclass_sesion04.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 5: Atributos y Búsqueda <span
+								class="badge intermedio">Intermedio</span></div>
+						<div class="session-body">
+							<p>Manipulación de archivos ocultos/sistema y minería de texto (Attrib, Find).</p>
+							<a href="masterclass_sesion05.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 6: Redes Básicas <span
+								class="badge intermedio">Intermedio</span></div>
+						<div class="session-body">
+							<p>Identidad en la red, configuración IP y pruebas de conectividad (Ipconfig, Ping).</p>
+							<a href="masterclass_sesion06.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 7: Diagnóstico de Red <span
+								class="badge intermedio">Intermedio</span></div>
+						<div class="session-body">
+							<p>Rastreo de rutas y resolución de nombres de dominio (Tracert, Nslookup).</p>
+							<a href="masterclass_sesion07.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 8: Control de Procesos <span
+								class="badge avanzado">Avanzado</span></div>
+						<div class="session-body">
+							<p>Gestión de memoria y cierre forzado de aplicaciones bloqueadas (Tasklist, Taskkill).</p>
+							<a href="masterclass_sesion08.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 9: Auditoría <span class="badge avanzado">Avanzado</span>
+						</div>
+						<div class="session-body">
+							<p>Extracción de información de hardware y reportes técnicos (Systeminfo, WMIC).</p>
+							<a href="masterclass_sesion09.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 10: Discos <span class="badge avanzado">Avanzado</span></div>
+						<div class="session-body">
+							<p>Reparación de sectores y gestión de particiones (Chkdsk, Diskpart).</p>
+							<a href="masterclass_sesion10.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 11: Redirección <span class="badge avanzado">Avanzado</span>
+						</div>
+						<div class="session-body">
+							<p>Flujo de datos, logs y encadenamiento de comandos (Pipes, >, >>).</p>
+							<a href="masterclass_sesion11.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 12: Intro a Batch <span
+								class="badge avanzado">Avanzado</span></div>
+						<div class="session-body">
+							<p>Creación de archivos .bat, variables y entorno de programación.</p>
+							<a href="masterclass_sesion12.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 13: Lógica y Control <span
+								class="badge avanzado">Avanzado</span></div>
+						<div class="session-body">
+							<p>Automatización inteligente con condicionales y saltos (IF, GOTO).</p>
+							<a href="masterclass_sesion13.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 14: Bucles Masivos <span
+								class="badge avanzado">Avanzado</span></div>
+						<div class="session-body">
+							<p>Procesamiento en lote y automatización repetitiva (Comando FOR).</p>
+							<a href="masterclass_sesion14.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card">
+						<div class="session-header">Sesión 15: Seguridad <span class="badge avanzado">Avanzado</span>
+						</div>
+						<div class="session-body">
+							<p>Gestión de usuarios y control de acceso a archivos (Net User, Icacls).</p>
+							<a href="masterclass_sesion15.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card special-card">
+						<div class="session-header">Sesión 16: PROYECTO FINAL <span class="badge avanzado">Master</span>
+						</div>
+						<div class="session-body">
+							<p>Desarrollo de un Sistema de Respaldo Automatizado Profesional.</p>
+							<a href="masterclass_sesion16.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card special-card">
+						<div class="session-header">Funcional: Organizador <span
+								class="badge intermedio">Práctico</span></div>
+						<div class="session-body">
+							<p>Organización masiva de archivos en carpetas por extensión.</p>
+							<a href="ejercicios funcionales/clasarchcmd.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+					<div class="session-card special-card">
+						<div class="session-header">Funcional: Movimientos <span
+								class="badge intermedio">Práctico</span></div>
+						<div class="session-body">
+							<p>Mover archivos masivamente con el comando move a carpetas creadas por el usuario.</p>
+							<a href="ejercicios funcionales/cmds.html" class="btn-access">Ver Sesión</a>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+
+			<aside class="sidebar">
+				<h2>Enlaces Rápidos</h2>
+				<ul>
+					<li><a href="../practica cmd.html">🚀 Laboratorio Principal</a></li>
+					<li><a href="planeacion cmd.html">📝 Planeación del Curso</a></li>
+					<li><a href="masterclass_sesion01.html">S1: Fundamentos</a></li>
+					<li><a href="masterclass_sesion02.html">S2: Navegación</a></li>
+					<li><a href="masterclass_sesion03.html">S3: Archivos</a></li>
+					<li><a href="masterclass_sesion04.html">S4: Directorios</a></li>
+					<li><a href="masterclass_sesion05.html">S5: Atributos</a></li>
+					<li><a href="masterclass_sesion06.html">S6: Redes</a></li>
+					<li><a href="masterclass_sesion07.html">S7: Diagnóstico Red</a></li>
+					<li><a href="masterclass_sesion08.html">S8: Procesos</a></li>
+					<li><a href="masterclass_sesion09.html">S9: Auditoría</a></li>
+					<li><a href="masterclass_sesion10.html">S10: Discos</a></li>
+					<li><a href="masterclass_sesion11.html">S11: Redirección</a></li>
+					<li><a href="masterclass_sesion12.html">S12: Batch Básico</a></li>
+					<li><a href="masterclass_sesion13.html">S13: Lógica</a></li>
+					<li><a href="masterclass_sesion14.html">S14: Bucles</a></li>
+					<li><a href="masterclass_sesion15.html">S15: Seguridad</a></li>
+					<li><a href="masterclass_sesion16.html">S16: Proyecto Final</a></li>
+					<li><a href="ejercicios funcionales/index.html">Ejercicios Funcionales</a></li>
+				</ul>
+			</aside>
+		</div>
+
+		<footer>
+			<p>© JMGV-PTEL-2026. Masterclass CMD. Todos los derechos reservados.</p>
+		</footer>
+	</div>
+
+	<!-- Script Global de Gamificación -->
+	<script src="script.js"></script>
+
+    <!-- Librerías de Firebase y Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    
+    <!-- Variables de entorno seguras -->
+    <script src="js/env.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+
+    <!-- Librerías para Generar PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- Lógica del Quiz Interactivo -->
+    <script src="js/quizData.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

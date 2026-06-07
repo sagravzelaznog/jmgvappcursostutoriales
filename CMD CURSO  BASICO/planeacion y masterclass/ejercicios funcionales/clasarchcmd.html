@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass: Clasificación de Archivos con CMD</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header style="position: relative;">
+        <a href="../index.html" style="position: absolute; top: 20px; left: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 4px;">⬅ Volver al Menú</a>
+        <div class="header-content">
+            <h1>💻 Masterclass: Magia en la Terminal</h1>
+            <p>Aprende a clasificar miles de archivos en segundos usando CMD.</p>
+        </div>
+        <button id="btn-profesor" onclick="unlockTeacherMode()">Modo Maestro</button>
+    </header>
+
+    <main>
+        <section class="lesson-section">
+            <h2>1. El Problema: El Caos Digital</h2>
+            <p>Imagina una carpeta de "Descargas" con cientos de archivos: PDFs, imágenes, documentos de Word y ejecutables. Organizarlos a mano arrastrando y soltando tomaría horas.</p>
+            
+            <div class="teacher-tip">
+                <strong>👨‍🏫 Tip para el Profesor:</strong> Antes de mostrar el código, pide a los alumnos que abran su carpeta de descargas. Pregúntales cuánto tiempo les tomaría organizar 500 archivos manualmente. Esto activa el aprendizaje basado en problemas (Andragogía).
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>2. La Solución: El Bucle FOR en CMD</h2>
+            <p>Windows tiene una herramienta poderosa llamada <strong>Símbolo del Sistema (CMD)</strong>. Podemos escribir una sola línea de código que revise cada archivo, cree una carpeta con el nombre de su extensión y lo mueva allí.</p>
+            
+            <div class="code-container">
+                <code>for %i in (*.*) do mkdir "%~xi" & move "%i" "%~xi"</code>
+            </div>
+
+            <div class="teacher-tip">
+                <strong>👨‍🏫 Tip para el Profesor:</strong> Advierte a los alumnos que <strong>NO</strong> ejecuten este comando en su escritorio principal todavía. Haz que creen una carpeta llamada "PruebaCMD", copien 5 archivos de diferentes tipos allí y abran el CMD específicamente en esa ruta.
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>3. Anatomía del Código</h2>
+            <ul class="breakdown-list">
+                <li><strong><code>for %i in (*.*)</code></strong> : Inicia un bucle que selecciona absolutamente todos los archivos (*.*) en la carpeta actual y los guarda temporalmente en la variable <code>%i</code>.</li>
+                <li><strong><code>do</code></strong> : Le dice al sistema "haz lo siguiente con cada archivo encontrado".</li>
+                <li><strong><code>mkdir "%~xi"</code></strong> : Crea un directorio (carpeta). <code>%~xi</code> es la magia: extrae únicamente la <strong>extensión</strong> del archivo (por ejemplo, .pdf).</li>
+                <li><strong><code>&</code></strong> : Permite ejecutar un segundo comando en la misma línea.</li>
+                <li><strong><code>move "%i" "%~xi"</code></strong> : Mueve el archivo original (<code>%i</code>) hacia la nueva carpeta recién creada (<code>%~xi</code>).</li>
+            </ul>
+
+            <div class="teacher-tip">
+                <strong>👨‍🏫 Tip para el Profesor:</strong> Explica que al ejecutar esto, CMD mostrará un error de "El subdirectorio o archivo ya existe" si la carpeta ya fue creada por un archivo anterior. Aclara que es normal y el script seguirá funcionando (para evitar el error se usaría un condicional 'if not exist', pero para esta clase básica, mantener el código corto es mejor).
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>🧠 Demuestra tu Conocimiento</h2>
+            <p>Responde estas 10 preguntas estilo Kahoot para validar lo aprendido.</p>
+            
+            <div id="quiz-container" class="quiz-container">
+                <div id="question-header" class="question-header">
+                    <span id="question-counter">Pregunta 1 de 10</span>
+                </div>
+                <h3 id="question-text">Cargando pregunta...</h3>
+                <div id="answer-buttons" class="btn-grid">
+                    </div>
+                <div id="score-container" class="hidden">
+                    <h2 id="final-score"></h2>
+                    <button id="restart-btn" onclick="startQuiz()">Reintentar Masterclass</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>copyright &copy;jmgv-ptel- 2026. masterclass clasificacion de archivos con cmd. todos los derechos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

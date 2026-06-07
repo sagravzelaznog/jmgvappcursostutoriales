@@ -1,0 +1,32 @@
+
+/*4. Estructuras de Control (Condicionales) Uso básico de if y else
+:*/
+let edad = 16;
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres menor de edad");
+}
+/*Uso de else if para múltiples condiciones en cadena
+:*/
+let calificacion = 85;
+if (calificacion >= 90) {
+  console.log("Calificación: A — Excelente");
+} else if (calificacion >= 80) {
+  console.log("Calificación: B — Bueno");
+} else if (calificacion >= 70) {
+  console.log("Calificación: C — Regular");
+} else {
+  console.log("Calificación: F — Reprobado");
+}
+/*Estructura switch para comparar un valor exacto
+:*/
+let dia = 3;
+switch (dia) {
+  case 1: console.log("Lunes"); break;
+  case 2: console.log("Martes"); break;
+  case 3: console.log("Miércoles"); break; // dia es 3, así que entra aquí
+  case 4: console.log("Jueves"); break;
+  case 5: console.log("Viernes"); break;
+  default: console.log("Fin de semana");
+}

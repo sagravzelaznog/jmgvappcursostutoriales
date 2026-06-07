@@ -1,0 +1,43 @@
+
+/*3. Operadores Operadores aritméticos básicos, incluyendo módulo y potencia
+:*/
+let suma = 10 + 5;          // Resultado: 15
+let resta = 10 - 3;         // Resultado: 7
+let multi = 4 * 3;          // Resultado: 12
+let division = 20 / 4;      // Resultado: 5
+let residuo = 10 % 3;       // Resultado: 1
+let potencia = 2 ** 3;      // Resultado: 8 (2 elevado a la 3)
+
+console.log(suma, resta, multi, division, residuo, potencia);
+/*Operadores de comparación (usando siempre la igualdad estricta ===)
+:*/
+console.log(5 === 5);      // true
+console.log(5 === "5");    // false (número vs string)
+console.log(5 == "5");     // true (convierte tipos automáticamente)
+console.log(5 !== "5");    // true
+console.log(10 > 5);       // true
+console.log(3 < 1);        // false
+console.log(5 >= 5);       // true
+console.log(4 <= 3);       // false
+/*Operadores lógicos (AND &&, OR ||, NOT !)
+:*/
+let edad2 = 20; 
+let tieneCredencial = true;
+
+// AND (&&) 
+if (edad2 >= 18 && tieneCredencial) { 
+  console.log("Puede votar"); 
+}
+
+// OR (||)
+let esFinDeSemana = false; 
+let esVacaciones = true; 
+if (esFinDeSemana || esVacaciones) { 
+  console.log("¡No hay clases!"); 
+}
+
+// NOT (!)
+let lloviendo = false; 
+if (!lloviendo) { 
+  console.log("Podemos salir al patio"); 
+}

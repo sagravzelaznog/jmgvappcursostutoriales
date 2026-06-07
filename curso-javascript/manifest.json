@@ -1,0 +1,17 @@
+{
+  "name": "Academia Web JS",
+  "short_name": "Academia JS",
+  "description": "Curso interactivo de JavaScript, HTML y CSS.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "icons": [
+    {
+      "src": "./icon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
