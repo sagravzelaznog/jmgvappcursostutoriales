@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio CMD: 20 Ejercicios de Reparación</title>
+    <!-- Enlace a los estilos globales -->
+    <link rel="stylesheet" href="planeacion y masterclass/styles.css">
+    <style>
+        /* Estilos específicos adicionales para esta página */
+        .search-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-container input {
+            flex-grow: 1;
+            padding: 12px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .exercise-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .card-header {
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header:hover { background: rgba(255, 255, 255, 0.08); }
+
+        .card-header h3 { margin: 0; font-size: 1.1em; color: var(--accent); }
+
+        .card-body {
+            padding: 20px;
+            display: none;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tag {
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            margin-left: 10px;
+        }
+
+        .master-section {
+            margin-top: 50px;
+            padding: 25px;
+            border: 2px dashed #f59e0b;
+            border-radius: var(--radius);
+            background: var(--bg-card);
+        }
+
+        #master-content { display: none; margin-top: 20px; }
+        .master-note { border-left: 4px solid #f59e0b; padding-left: 15px; margin-bottom: 15px; }
+
+        .input-master {
+            padding: 10px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: white;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container animate-fade">
+    <header>
+        <h1>LABORATORIO DE REPARACIÓN CMD</h1>
+        <p class="subtitle">20 Ejercicios Profesionales para PC & Laptops</p>
+        <a href="planeacion y masterclass/index.html" class="btn-primary" style="margin-top:15px; text-decoration:none; display:inline-block;">⬅ Volver al Menú Principal</a>
+    </header>
+
+    <!-- Panel Gamificación (Global) -->
+    <div class="gamification-bar">
+        <div>
+            <h3>👨‍💻 Tu Progreso</h3>
+            <p style="margin: 0; font-size: 0.9rem;">Prueba los comandos para ganar puntos.</p>
+        </div>
+        <div class="stats">
+            <div class="stat-badge points">
+                <span>🏆</span> Puntos: <span id="user-points">0</span>
+            </div>
+            <div class="stat-badge level">
+                <span>⭐</span> Nivel: <span id="user-level">Principiante</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Buscar ejercicio (ej. disco, red, bateria)..." onkeyup="filterExercises()">
+    </div>
+
+    <div id="exerciseContainer">
+        <!-- 1 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>1. Diagnóstico de Salud de la Batería <span class="tag">Energía</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Genera un reporte detallado sobre el estado de desgaste de la batería en laptops.</p>
+                <div class="cmd-block">powercfg /batteryreport</div>
+                <p><strong>Explicación:</strong> Crea un archivo .html en la carpeta de usuario con ciclos de carga y capacidad real vs original.</p>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>2. Reparación de Archivos del Sistema <span class="tag">Sistema</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Busca y repara archivos corruptos de Windows que causan pantallazos azules.</p>
+                <div class="cmd-block">sfc /scannow</div>
+                <div class="danger-box">Nota: Requiere ejecutar CMD como Administrador.</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>3. Reparación de la Imagen de Windows (DISM) <span class="tag">Sistema</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Repara el almacén de componentes cuando SFC no puede solucionar los errores.</p>
+                <div class="cmd-block">dism /online /cleanup-image /restorehealth</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>4. Verificación de Errores en Disco <span class="tag">Disco</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Escanea la superficie del disco en busca de sectores defectuosos.</p>
+                <div class="cmd-block" style="border-left: 4px solid var(--color-error);">chkdsk C: /f /r</div>
+                <p><strong>Parámetros:</strong> /f corrige errores, /r recupera información legible de sectores dañados.</p>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>5. Reinicio de la Pila de Red (Winsock) <span class="tag">Red</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Soluciona problemas de "Conectividad Limitada" o DNS no responde.</p>
+                <div class="cmd-block">netsh winsock reset</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>6. Liberación y Renovación de IP <span class="tag">Red</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Fuerza al router a asignar una nueva dirección IP al equipo.</p>
+                <div class="cmd-block">ipconfig /release && ipconfig /renew</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>7. Limpieza de Caché DNS <span class="tag">Red</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Resuelve problemas al acceder a sitios web que cambiaron su IP.</p>
+                <div class="cmd-block">ipconfig /flushdns</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>8. Obtener el Número de Serie (Hardware) <span class="tag">Hardware</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Identifica el equipo para garantía sin buscar la etiqueta física.</p>
+                <div class="cmd-block">wmic bios get serialnumber</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>9. Listado de Controladores Instalados <span class="tag">Drivers</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Muestra todos los drivers y si están funcionando correctamente.</p>
+                <div class="cmd-block">driverquery /v</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>10. Forzar Cierre de Programa Bloqueado <span class="tag">Procesos</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Cierra una aplicación que no responde cuando el Administrador de Tareas falla.</p>
+                <div class="cmd-block">taskkill /f /im nombre_proceso.exe</div>
+                <p><em>Ejemplo: taskkill /f /im chrome.exe</em></p>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>11. Ver Conexiones de Red Activas <span class="tag">Red</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Detecta malware que se conecta a internet sin permiso.</p>
+                <div class="cmd-block">netstat -ano</div>
+                <p>Muestra la IP remota y el PID (ID del proceso).</p>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>12. Reparación de Atributos de Carpeta <span class="tag">Archivos</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Recupera carpetas ocultas por virus en memorias USB.</p>
+                <div class="cmd-block">attrib -s -h -r /s /d *.*</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>13. Diagnóstico de Información del Sistema <span class="tag">Sistema</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Reporte completo de hardware, versión de BIOS y parches de seguridad.</p>
+                <div class="cmd-block">systeminfo</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>14. Gestión de Discos y Particiones <span class="tag">Disco</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Entrar a la consola avanzada de gestión de almacenamiento.</p>
+                <div class="cmd-block" style="border-left: 4px solid var(--color-error);">diskpart</div>
+                <div class="danger-box">Peligro: Comandos dentro de DISKPART pueden borrar datos permanentemente.</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>15. Obtener Dirección MAC Física <span class="tag">Red</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Necesario para configurar filtrado MAC en routers.</p>
+                <div class="cmd-block">getmac /v</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 16 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>16. Apagado Programado <span class="tag">Config</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Útil para dejar una PC descargando o escaneando y que se apague sola.</p>
+                <div class="cmd-block">shutdown -s -t 3600</div>
+                <p>3600 representa los segundos (1 hora).</p>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 17 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>17. Ver Modelo de la Placa Base <span class="tag">Hardware</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Saber qué Motherboard tiene la PC para descargar drivers específicos.</p>
+                <div class="cmd-block">wmic baseboard get product,Manufacturer,version</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 18 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>18. Verificación de Asociaciones de Archivos <span class="tag">Sistema</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Repara problemas cuando un archivo (ej. .exe) no abre con el programa correcto.</p>
+                <div class="cmd-block">assoc .exe</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 19 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>19. Comprobar Tiempo de Actividad (Uptime) <span class="tag">Hardware</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Verifica si el cliente realmente reinició la PC (útil en soporte remoto).</p>
+                <div class="cmd-block">net statistics workstation | find "since"</div>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+        <!-- 20 -->
+        <div class="exercise-card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <h3>20. Borrado Seguro de Espacio Libre <span class="tag">Seguridad</span></h3>
+                <span>+</span>
+            </div>
+            <div class="card-body">
+                <p>Sobrescribe el espacio vacío del disco para que archivos borrados no sean recuperables.</p>
+                <div class="cmd-block" style="border-left: 4px solid var(--color-error);">cipher /w:C:</div>
+                <p>Solo afecta al espacio libre, no borra tus archivos actuales.</p>
+                <button class="btn-success" onclick="marcarCompletado(this, 5)">✅ Marcar como Practicado (+5 pts)</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sección Maestro -->
+    <div class="master-section">
+        <h3>🔐 Sección del Maestro</h3>
+        <p>Introduce el código para ver notas pedagógicas:</p>
+        <input type="password" id="masterPass" class="input-master" placeholder="Código">
+        <button class="btn-primary" onclick="unlockMaster()">Desbloquear</button>
+        
+        <div id="master-content">
+            <div class="master-note">
+                <p><strong>Estrategia Andragógica:</strong> Los ejercicios 4, 14 y 20 son críticos. Explicar siempre la diferencia entre comandos de solo lectura e intrusivos.</p>
+            </div>
+            <div class="master-note">
+                <p><strong>Tip de Reparación:</strong> Si `SFC` falla, siempre correr `DISM` con internet activo antes de intentar un segundo SFC.</p>
+            </div>
+            <div class="master-note">
+                <p><strong>Laboratorio Físico:</strong> Pide a los alumnos que generen el Battery Report (Ejer. 1) y analicen el desgaste en porcentajes.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; JMGV-PTEL 2026. LABORATORIO CMD REPARACIÓN. TODOS LOS DERECHOS RESERVADOS.
+    </footer>
+</div>
+
+<!-- Script global -->
+<script src="planeacion y masterclass/script.js"></script>
+<script>
+    function toggleCard(header) {
+        const body = header.nextElementSibling;
+        const span = header.querySelector('span');
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            span.innerText = "+";
+        } else {
+            body.style.display = "block";
+            span.innerText = "-";
+        }
+    }
+
+    function filterExercises() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.getElementsByClassName('exercise-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            const text = cards[i].innerText.toLowerCase();
+            cards[i].style.display = text.includes(input) ? "block" : "none";
+        }
+    }
+
+    function unlockMaster() {
+        const pass = document.getElementById('masterPass').value;
+        if (pass === "1983") {
+            document.getElementById('master-content').style.display = "block";
+            mostrarNotificacion("Acceso concedido, Colega JMGV.", "success");
+        } else {
+            mostrarNotificacion("Código incorrecto.", "error");
+        }
+    }
+
+    function marcarCompletado(btn, pts) {
+        if(!btn.disabled) {
+            btn.innerText = "¡Completado! (" + pts + " pts obtenidos)";
+            btn.style.opacity = "0.6";
+            btn.disabled = true;
+            if(window.agregarPuntos) {
+                window.agregarPuntos(pts);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+# INSTRUCCIONES PARA GITHUB
+
+1. Crea un nuevo repositorio en GitHub (por ejemplo, con el nombre "PORTAL-CURSOS"). No le añadas README, ni .gitignore, ni licencia por ahora.
+2. Abre tu terminal o línea de comandos en la carpeta "Cursos y Tutoriales".
+3. Copia y pega los siguientes comandos (asegúrate de cambiar la URL por la de tu nuevo repositorio):
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sagravzelaznog/<NOMBRE_DEL_REPOSITORIO>.git
+git push -u origin main
+
+# INSTRUCCIONES PARA NETLIFY
+
+Opción A (La más sencilla - Drag & Drop):
+1. Inicia sesión en Netlify.
+2. Ve a la sección "Sites" y arrastra la carpeta completa "Cursos y Tutoriales" al recuadro punteado.
+3. ¡Listo! Netlify publicará tu sitio automáticamente.
+
+Opción B (Desde GitHub):
+1. Inicia sesión en Netlify y selecciona "Add new site" -> "Import an existing project".
+2. Conecta tu cuenta de GitHub y elige el repositorio que acabas de crear.
+3. Deja la configuración por defecto y haz clic en "Deploy site".
