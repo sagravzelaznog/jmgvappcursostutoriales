@@ -61,28 +61,91 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Verificar si ya hay una sesión activa
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-        showDashboard();
+    // Configuración de Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyC08vUkWdQ9Ad3PaXS0uZ0yu_EWWBaq-aQ",
+        authDomain: "acceso-a-cursos-4a314.firebaseapp.com",
+        projectId: "acceso-a-cursos-4a314",
+        storageBucket: "acceso-a-cursos-4a314.firebasestorage.app",
+        messagingSenderId: "851856735092",
+        appId: "1:851856735092:web:04290714cb63e4244c4a21"
+    };
+
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
     }
 
+    const btnRegister = document.getElementById('btn-register');
+
+    // Escuchar el estado de autenticación en tiempo real
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            showDashboard();
+            // Mostrar correo del usuario en el header opcionalmente
+            const h2 = document.querySelector('.dashboard-header h2');
+            h2.textContent = `Mis Cursos (${user.email})`;
+        } else {
+            showLogin();
+        }
+    });
     // Manejar el submit del login
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const email = emailInput.value.trim();
         const password = passwordInput.value.trim();
 
-        // Validar credenciales (admin@correo.com / 1234)
-        if (email === 'admin@correo.com' && password === '1234') {
+        try {
             errorMessage.classList.add('hidden');
-            localStorage.setItem('isLoggedIn', 'true');
-            showDashboard();
-            // Limpiar formulario
+            await firebase.auth().signInWithEmailAndPassword(email, password);
+            // Firebase onAuthStateChanged se encargará de mostrar el dashboard
             emailInput.value = '';
             passwordInput.value = '';
-        } else {
-            // Mostrar error con pequeña animación
+        } catch (error) {
+            let msg = "Credenciales incorrectas.";
+            if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                msg = "Correo o contraseña incorrectos.";
+            } else if (error.code === 'auth/too-many-requests') {
+                msg = "Demasiados intentos fallidos. Intenta más tarde.";
+            } else {
+                msg = error.message;
+            }
+            
+            errorMessage.textContent = msg;
+            errorMessage.classList.remove('hidden');
+            loginForm.classList.add('shake');
+            setTimeout(() => loginForm.classList.remove('shake'), 500);
+        }
+    });
+
+    // Manejar registro
+    btnRegister.addEventListener('click', async () => {
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (!email || !password) {
+            errorMessage.textContent = "Por favor ingresa correo y contraseña para registrarte.";
+            errorMessage.classList.remove('hidden');
+            return;
+        }
+
+        try {
+            errorMessage.classList.add('hidden');
+            await firebase.auth().createUserWithEmailAndPassword(email, password);
+            // Firebase onAuthStateChanged se encargará de mostrar el dashboard
+            emailInput.value = '';
+            passwordInput.value = '';
+        } catch (error) {
+            let msg = "Error al registrar.";
+            if (error.code === 'auth/email-already-in-use') {
+                msg = "El correo ya está registrado en otra cuenta.";
+            } else if (error.code === 'auth/weak-password') {
+                msg = "La contraseña debe tener al menos 6 caracteres.";
+            } else {
+                msg = error.message;
+            }
+            
+            errorMessage.textContent = msg;
             errorMessage.classList.remove('hidden');
             loginForm.classList.add('shake');
             setTimeout(() => loginForm.classList.remove('shake'), 500);
@@ -91,8 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejar cierre de sesión
     logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('isLoggedIn');
-        showLogin();
+        firebase.auth().signOut();
     });
 
     // Función para mostrar dashboard y renderizar cursos
