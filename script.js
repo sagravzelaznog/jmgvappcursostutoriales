@@ -9,57 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logout-btn');
     const coursesContainer = document.getElementById('courses-container');
 
-    // Lista de cursos disponibles en la carpeta
-    const courses = [
-        {
-            folder: "CMD CURSO  BASICO",
-            name: "CMD Básico",
-            desc: "Aprende los comandos esenciales de la línea de comandos de Windows.",
-            icon: "fa-terminal"
-        },
-        {
-            folder: "TUTORIALES DE INFO",
-            name: "Tutoriales de Info",
-            desc: "Material de apoyo y tutoriales generales de informática.",
-            icon: "fa-desktop"
-        },
-        {
-            folder: "TUTORICALS DE INFO",
-            name: "Tutorials de Info (Alt)",
-            desc: "Directorio alternativo de tutoriales de informática.",
-            icon: "fa-book-open"
-        },
-        {
-            folder: "curso Cisco Paket Tracer",
-            name: "Cisco Packet Tracer",
-            desc: "Simulación de redes, configuración de routers y switches.",
-            icon: "fa-network-wired"
-        },
-        {
-            folder: "curso GeoGebra",
-            name: "GeoGebra",
-            desc: "Matemáticas dinámicas, geometría, álgebra y cálculo.",
-            icon: "fa-calculator"
-        },
-        {
-            folder: "curso-javascript",
-            name: "JavaScript",
-            desc: "Desarrollo web interactivo, lógica de programación y PWA.",
-            icon: "fa-js"
-        },
-        {
-            folder: "cursofernandarubi",
-            name: "Curso Fernanda Rubi",
-            desc: "Materiales y lecciones específicas del curso.",
-            icon: "fa-chalkboard-user"
-        },
-        {
-            folder: "ia manuel curso",
-            name: "Curso IA Manuel",
-            desc: "Inteligencia Artificial y sus aplicaciones prácticas.",
-            icon: "fa-robot"
-        }
-    ];
+    // Configuración de Firestore (se inicializa más abajo junto con Auth)
+    let courses = [];
 
     // Configuración de Firebase
     const firebaseConfig = {
@@ -74,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
     }
+    const db = firebase.firestore();
 
     const btnRegister = document.getElementById('btn-register');
 
@@ -185,33 +137,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // Función para renderizar las tarjetas de los cursos
-    function renderCourses() {
-        coursesContainer.innerHTML = '';
+    // Función para renderizar las tarjetas de los cursos desde Firestore
+    async function renderCourses() {
+        coursesContainer.innerHTML = '<div style="color: white; grid-column: 1/-1; text-align: center;"><i class="fa-solid fa-spinner fa-spin"></i> Cargando cursos...</div>';
         
-        courses.forEach((course, index) => {
-            const card = document.createElement('a');
-            // La ruta apunta al directorio. El navegador cargará index.html automáticamente o mostrará el índice de archivos
-            card.href = encodeURIComponent(course.folder) + "/"; 
-            card.className = 'course-card';
+        try {
+            const snapshot = await db.collection('courses').get();
+            coursesContainer.innerHTML = '';
             
-            // Añadir un pequeño retraso de animación en cascada
-            card.style.animation = `fadeUp 0.5s ease-out ${index * 0.1}s forwards`;
-            card.style.opacity = '0';
-            
-            card.innerHTML = `
-                <div class="course-icon">
-                    <i class="fa-solid ${course.icon}"></i>
-                </div>
-                <h3>${course.name}</h3>
-                <p>${course.desc}</p>
-                <div class="course-action">
-                    Entrar al curso <i class="fa-solid fa-arrow-right"></i>
-                </div>
-            `;
-            
-            coursesContainer.appendChild(card);
-        });
+            if (snapshot.empty) {
+                coursesContainer.innerHTML = '<div style="color: white; grid-column: 1/-1; text-align: center;">No hay cursos disponibles. (Ejecuta la migración en uploader.html)</div>';
+                return;
+            }
+
+            let index = 0;
+            snapshot.forEach(doc => {
+                const course = doc.data();
+                const card = document.createElement('a');
+                card.href = encodeURIComponent(course.folder) + "/"; 
+                card.className = 'course-card';
+                
+                card.style.animation = `fadeUp 0.5s ease-out ${index * 0.1}s forwards`;
+                card.style.opacity = '0';
+                
+                card.innerHTML = `
+                    <div class="course-icon">
+                        <i class="fa-solid ${course.icon || 'fa-book'}"></i>
+                    </div>
+                    <h3>${course.name}</h3>
+                    <p>${course.desc}</p>
+                    <div class="course-action">
+                        Entrar al curso <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                `;
+                
+                coursesContainer.appendChild(card);
+                index++;
+            });
+        } catch (error) {
+            console.error("Error cargando cursos:", error);
+            coursesContainer.innerHTML = '<div style="color: #ff6b6b; grid-column: 1/-1; text-align: center;">Error al conectar con la base de datos. Verifica tus reglas de Firestore.</div>';
+        }
     }
 });
 

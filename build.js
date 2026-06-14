@@ -11,7 +11,8 @@ const paths = [
     './env.js',
     './CMD CURSO  BASICO/planeacion y masterclass/js/env.js',
     './curso Cisco Paket Tracer/js/env.js',
-    './curso GeoGebra/recursos/js/env.js'
+    './curso GeoGebra/recursos/js/env.js',
+    './Mantenimiento CPU/js/env.js'
 ];
 
 paths.forEach(p => {

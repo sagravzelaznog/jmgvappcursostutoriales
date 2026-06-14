@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Migración de Datos a Firestore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Configuración Local -->
+    <script src="env.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body style="padding: 2rem;">
+    <div class="glass-panel" style="max-width: 800px; margin: 0 auto; text-align: left;">
+        <h2>🛠 Asistente de Migración a Firestore</h2>
+        <p>Asegúrate de haber iniciado sesión como administrador (o tener permisos de escritura en las Reglas de Firestore) antes de continuar.</p>
+        
+        <div id="status" style="margin: 1rem 0; font-weight: bold; color: #ffeb3b;"></div>
+
+        <button id="btn-migrate-courses" class="btn-primary" style="margin-bottom: 1rem;">1. Migrar Lista de Cursos Básicos</button>
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 2rem 0;">
+        
+        <h3>2. Subir Master Classes (Mantenimiento CPU)</h3>
+        <p>Selecciona los 10 archivos TXT de "Guia_Paquete_...":</p>
+        <input type="file" id="file-input" multiple accept=".txt" style="margin-bottom: 1rem; color: white;">
+        <br>
+        <button id="btn-upload-lessons" class="btn-secondary">Procesar y Subir Lecciones</button>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: window.ENV ? window.ENV.FIREBASE_API_KEY : "",
+            authDomain: "acceso-a-cursos-4a314.firebaseapp.com",
+            projectId: "acceso-a-cursos-4a314",
+            storageBucket: "acceso-a-cursos-4a314.firebasestorage.app",
+            messagingSenderId: "851856735092",
+            appId: "1:851856735092:web:04290714cb63e4244c4a21"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const statusDiv = document.getElementById('status');
+        const showStatus = (msg) => { statusDiv.textContent = msg; console.log(msg); };
+
+        // 1. Lista General
+        const courses = [
+            { folder: "CMD CURSO  BASICO", name: "CMD Básico", desc: "Aprende los comandos esenciales de la línea de comandos de Windows.", icon: "fa-terminal" },
+            { folder: "TUTORIALES DE INFO", name: "Tutoriales de Info", desc: "Material de apoyo y tutoriales generales de informática.", icon: "fa-desktop" },
+            { folder: "TUTORICALS DE INFO", name: "Tutorials de Info (Alt)", desc: "Directorio alternativo de tutoriales de informática.", icon: "fa-book-open" },
+            { folder: "curso Cisco Paket Tracer", name: "Cisco Packet Tracer", desc: "Simulación de redes, configuración de routers y switches.", icon: "fa-network-wired" },
+            { folder: "curso GeoGebra", name: "GeoGebra", desc: "Matemáticas dinámicas, geometría, álgebra y cálculo.", icon: "fa-calculator" },
+            { folder: "curso-javascript", name: "JavaScript", desc: "Desarrollo web interactivo, lógica de programación y PWA.", icon: "fa-js" },
+            { folder: "cursofernandarubi", name: "Curso Fernanda Rubi", desc: "Materiales y lecciones específicas del curso.", icon: "fa-chalkboard-user" },
+            { folder: "ia manuel curso", name: "Curso IA Manuel", desc: "Inteligencia Artificial y sus aplicaciones prácticas.", icon: "fa-robot" },
+            { folder: "Mantenimiento CPU", name: "Mantenimiento CPU", desc: "10 Master classes para optimización profunda del sistema.", icon: "fa-microchip" }
+        ];
+
+        document.getElementById('btn-migrate-courses').addEventListener('click', async () => {
+            try {
+                showStatus("Migrando lista de cursos...");
+                for(let c of courses) {
+                    await db.collection('courses').doc(c.folder).set(c);
+                }
+                showStatus("¡Lista de cursos migrada con éxito!");
+            } catch(e) {
+                showStatus("Error: " + e.message);
+            }
+        });
+
+        // 2. Parsear y subir Master Classes
+        document.getElementById('btn-upload-lessons').addEventListener('click', async () => {
+            const files = document.getElementById('file-input').files;
+            if(files.length === 0) return showStatus("Selecciona los archivos primero.");
+            
+            showStatus("Procesando archivos...");
+            
+            try {
+                // Primero asegurarse de que existe el documento del curso
+                await db.collection('courses').doc('Mantenimiento CPU').set({
+                    folder: "Mantenimiento CPU", 
+                    name: "Mantenimiento CPU", 
+                    desc: "10 Master classes para optimización profunda del sistema.", 
+                    icon: "fa-microchip"
+                }, { merge: true });
+
+                let uploadedCount = 0;
+                
+                for(let file of files) {
+                    const text = await file.text();
+                    
+                    // Lógica sencilla de parseo: extraer título (línea 2 aprox) y el texto completo
+                    const lines = text.split('\n');
+                    let title = "Lección";
+                    for(let l of lines) {
+                        if(l.startsWith('MÓDULO')) {
+                            title = l.trim();
+                            break;
+                        }
+                    }
+                    
+                    // Extraer número de módulo para el orden
+                    let orderMatch = title.match(/MÓDULO\s+(\d+)/i);
+                    let order = orderMatch ? parseInt(orderMatch[1]) : 99;
+
+                    const docRef = db.collection('courses').doc('Mantenimiento CPU').collection('lessons').doc('lesson_' + order);
+                    await docRef.set({
+                        title: title,
+                        content: text,
+                        order: order
+                    });
+                    
+                    uploadedCount++;
+                    showStatus(\`Subiendo... \${uploadedCount}/\${files.length}\`);
+                }
+                showStatus("¡Master Classes subidas con éxito!");
+            } catch(e) {
+                showStatus("Error: " + e.message);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento CPU - Master Classes</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Entorno Local -->
+    <script src="js/env.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="app-background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <!-- Pantalla de Carga -->
+    <div id="loader" class="loader-overlay">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <p>Autenticando y sincronizando con la red...</p>
+    </div>
+
+    <div class="layout hidden" id="main-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <div class="logo-wrapper">
+                    <i class="fa-solid fa-microchip logo-icon"></i>
+                </div>
+                <div>
+                    <h1>Mantenimiento CPU</h1>
+                    <span class="badge">PRO COURSE</span>
+                </div>
+            </div>
+
+            <nav class="lessons-nav">
+                <ul id="lessons-list">
+                    <!-- Las lecciones se inyectarán aquí dinámicamente -->
+                    <li class="lesson-skeleton"></li>
+                    <li class="lesson-skeleton"></li>
+                    <li class="lesson-skeleton"></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="user-details">
+                        <span class="user-role">Estudiante Activo</span>
+                        <span id="user-email" class="user-email">cargando...</span>
+                    </div>
+                </div>
+                <button id="btn-back" class="btn-icon tooltip" data-tooltip="Volver al Portal">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area glass-panel">
+            <header class="content-header">
+                <div class="breadcrumb">
+                    <span>Módulos</span> <i class="fa-solid fa-chevron-right"></i> <span id="current-lesson-badge" class="highlight">Selecciona una lección</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-primary" id="btn-mark-completed">
+                        <i class="fa-solid fa-check"></i> Completado
+                    </button>
+                </div>
+            </header>
+
+            <div class="lesson-content-wrapper scrollable">
+                <div id="lesson-body" class="lesson-body">
+                    <div class="empty-state">
+                        <div class="hologram-icon">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h2>Bienvenido al Centro de Mando</h2>
+                        <p>Selecciona un módulo en el menú lateral para inicializar el protocolo de aprendizaje.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
