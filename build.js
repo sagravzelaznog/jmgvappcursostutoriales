@@ -15,11 +15,17 @@ const paths = [
     './Mantenimiento CPU/js/env.js'
 ];
 
+const path = require('path');
+
 paths.forEach(p => {
     try {
+        const dir = path.dirname(p);
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
         fs.writeFileSync(p, envContent);
         console.log("Generado correctamente: " + p);
     } catch(e) {
-        console.log("Error al generar: " + p);
+        console.log("Error al generar: " + p, e);
     }
 });
